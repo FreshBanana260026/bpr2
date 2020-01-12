@@ -1,14 +1,28 @@
 'use strict';
 
-// Declare app level module which depends on views, and core components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+angular.module('foodAssistant', ['ngRoute'])
+    .config([/*'$locationProvider', */'$routeProvider', function(/*$locationProvider, */$routeProvider) {
+//  $locationProvider.hashPrefix('!');
+  $routeProvider
+      .when("/", {
+          templateUrl : "login.html",
+          controller : 'LoginCtrl',
+      })
+      .otherwise({
+          /*templateUrl : "login.html",
+          controller : 'LoginCtrl'*/
+      });
+  //$routeProvider.otherwise({redirectTo: '/view1'});
+}])
+    /*.controller('LoginCtrl', ['$scope', function($scope) {
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  $scope.login = async function (uName) {
+    const res = await fetch(SERVER_URL + `/login?userName=${uName}`, {mode: 'cors'})
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    const j = await res.json();
+    console.log("Welcome " + j.userName);
+  }
+  
+}])*/;

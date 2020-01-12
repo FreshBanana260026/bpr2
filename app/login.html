@@ -1,0 +1,21 @@
+<div id="wrapper">
+    <div id="login">
+        <form novalidate>
+            <table>
+                <tr>
+                    <td><b>Email:</b></td>
+                    <td><input type="text" name="email" ng-model="email"></td>
+                </tr>
+                <tr>
+                    <td><b>Password:</b></td>
+                    <td><input type="text" name="password"></td>
+                </tr>
+            </table>
+            <div class="bottom">
+                <input type="submit" value="Login" ng-click="login(email)"><br> <b> OR </b><br> <button id="register">Register</button>
+                <a href="">Forgot Password?</a>
+            </div>
+
+        </form>
+    </div>
+</div>
