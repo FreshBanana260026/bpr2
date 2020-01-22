@@ -1,21 +1,57 @@
 <div id="wrapper">
     <div id="login">
+        <div class="topper"><b>Login</b></div>
         <form novalidate>
             <table>
                 <tr>
                     <td><b>Email:</b></td>
-                    <td><input type="text" name="email" ng-model="email"></td>
+                    <td><input type="text" name="emailLogin" ng-model="emailLogin"></td>
                 </tr>
                 <tr>
                     <td><b>Password:</b></td>
-                    <td><input type="text" name="password"></td>
+                    <td><input type="text" name="passwordLogin" ng-model="passwordLogin"></td>
                 </tr>
             </table>
             <div class="bottom">
-                <input type="submit" value="Login" ng-click="login(email)"><br> <b> OR </b><br> <button id="register">Register</button>
+                <input type="submit" value="Login" ng-click="login()"><br> <b> OR </b><br> <button id="register" ng-click="openRegForm()"><b>Register</b></button>
                 <a href="">Forgot Password?</a>
             </div>
-
         </form>
+    </div>
+
+    <div id="registration-modal" class="modal-bg">
+        <div class="registration-content">
+            <div id="reg-top"><b>Registration Form</b></div>
+
+            <form novalidate>
+                <table>
+                    <tr>
+                        <td><b>Nickname:</b></td>
+                        <td><input type="text" name="nickname" ng-model="nickname"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Email:</b></td>
+                        <td><input type="text" name="email" ng-model="email"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Confirm email:</b></td>
+                        <td><input type="text" name="confirmEmail" ng-model="confirmEmail" ng-blur="confirmMail()" id="confirmEmail"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Password:</b></td>
+                        <td><input type="text" name="password" ng-model="password"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Confirm password:</b></td>
+                        <td><input type="text" name="confirmPassword" ng-model="confirmPassword" id="confirmPassword" ng-blur="confirmPass()"></td>
+                    </tr>
+                </table>
+                <div class="bottom">
+                    <button id="regCancel" ng-click="closeRegForm()"><b>Cancel</b></button>
+                    <button id="regSubmit" ng-click="register()"><b>Register</b></button>
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>

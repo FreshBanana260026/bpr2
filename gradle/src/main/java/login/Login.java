@@ -2,19 +2,25 @@ package login;
 
 public class Login {
 
-    private final String userName;
+    private final String email;
     private final String password;
+    private final String nick;
 
-    public Login(String userName, String password) {
-        this.userName = userName;
+    public Login(String email, String password, String nick) {
+        this.email = email;
         this.password = password;
+        this.nick = nick;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public String getNick() {
+        return nick;
     }
 }

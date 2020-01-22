@@ -8,6 +8,10 @@ angular.module('foodAssistant', ['ngRoute'])
           templateUrl : "login.html",
           controller : 'LoginCtrl',
       })
+      .when("/home", {
+          templateUrl : "home.html",
+          controller : 'HomeCtrl',
+      })
       .otherwise({
           /*templateUrl : "login.html",
           controller : 'LoginCtrl'*/
