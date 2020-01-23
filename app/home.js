@@ -14,5 +14,10 @@ angular.module('foodAssistant')
                 $('.drop-down').fadeOut();
                 dropDown = true;
             }
+        };
+
+        $scope.logOut = function() {
+            statusService.setLoggedIn(false);
+            $window.location.href = "#!/";
         }
     }]);
