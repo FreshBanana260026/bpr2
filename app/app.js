@@ -12,6 +12,14 @@ angular.module('foodAssistant', ['ngRoute'])
           templateUrl : "home.html",
           controller : 'HomeCtrl',
       })
+      .when("/recipes", {
+          templateUrl : "recipes.html",
+          controller : 'RecipesCtrl',
+      })
+      .when("/random", {
+          templateUrl : "random.html",
+          controller : 'RandomCtrl',
+      })
       .otherwise({
           /*templateUrl : "login.html",
           controller : 'LoginCtrl'*/

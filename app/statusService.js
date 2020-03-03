@@ -1,6 +1,6 @@
 angular.module('foodAssistant')
     .service('statusService', function () {
-        let loggedIn = false;
+        let loggedIn = true;
 
         return {
             getLoggedIn: function () {

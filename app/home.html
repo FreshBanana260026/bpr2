@@ -1,10 +1,10 @@
-<div id="wrapper-home">
+
     <div id="top-menu">
         <ul>
             <li><a href="" class="non-click"><img src="favicon.ico"></a></li>
             <li><a href="#!home">Home</a></li>
-            <li><a href="#!/">Recipes</a></li>
-            <li><a href="#!/">Random</a></li>
+            <li><a href="#!recipes">Recipes</a></li>
+            <li><a href="#!random">Random</a></li>
             <li><a class="non-click"><input id="search-field"><button id="search-button"><b>Search</b></button></a></li>
         </ul>
         <div id="side-menu" ng-click="openDropDown()">
@@ -18,5 +18,5 @@
                 <div class="drop-item" ng-click="logOut()">Log Out</div>
             </div>
         </div>
+        <button id="add-rec-button" ng-click="recipeForm()"></button>
     </div>
-</div>

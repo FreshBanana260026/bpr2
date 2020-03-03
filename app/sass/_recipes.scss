@@ -1,0 +1,78 @@
+@import "colors";
+
+#page-body {
+  display: block;
+  width: 100%;
+  height: calc(100% - 90px);
+  background-image: url('../pictures/yellow.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 90px;
+}
+
+
+#recipe-content {
+  display: block;
+  width: calc(100% - 160px);
+  height: calc(100% - 130px);
+  //margin: 30px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 25px;
+  padding: 50px;
+}
+
+#recipe-filters {
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 20px;
+  width: calc(30% - 40px);
+  height: calc(100% - 40px);
+  float: left;
+
+  button {
+    float: right;
+    height: 2.5em;
+    background-color: $main-color;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background-color: $main-color-hover;
+  }
+}
+
+#recipe-list {
+  float: right;
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  color: black;
+  padding: 0;
+  width: 60%;
+  height: 100%;
+  overflow-y: scroll;
+  margin: 0;
+
+  li {
+    display: flex;
+    min-height: 40px;
+    font-size: 20px;
+    align-items: center;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+}
+
+#recipe-list::-webkit-scrollbar {
+  display: none;
+}
