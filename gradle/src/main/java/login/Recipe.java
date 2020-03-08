@@ -35,4 +35,5 @@ public class Recipe {
     public String getRecipetext() {
         return recipetext;
     }
+
 }

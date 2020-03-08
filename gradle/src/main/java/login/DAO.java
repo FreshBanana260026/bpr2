@@ -66,4 +66,32 @@ public class DAO {
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
     }
+
+    public boolean removeRecipe(String id) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
+            Statement stmt = con.createStatement();
+            String sql = "DELETE FROM assistant.recipes WHERE recipeid = "+id+"";
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean updateRecipe(String id, String recipeText) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
+            Statement stmt = con.createStatement();
+            String sql = "UPDATE assistant.recipes SET recipetext = " +recipeText+ " WHERE recipe id ="+ id +"";
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 }

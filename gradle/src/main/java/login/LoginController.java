@@ -36,7 +36,7 @@ public class LoginController {
 
     @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(path = "/getRecipes", method = RequestMethod.GET)
-    public ArrayList<Recipe> getRecipes(@RequestParam(value="email") String email) {
+    public ArrayList<Recipe> getRecipes(@RequestParam(value = "email") String email) {
         return d.getRecipes(email);
     }
 
@@ -44,5 +44,17 @@ public class LoginController {
     @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
     public boolean addNewRecipe(@RequestBody Recipe recipe) {
         return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/removeRecipe", method = RequestMethod.POST, consumes = "application/json")
+    public boolean removeOldRecipe(@RequestBody Recipe recipe){
+        return d.removeRecipe(recipe.getRecipeid());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/removeRecipe", method = RequestMethod.POST, consumes = "application/json")
+    public boolean updateOldRecipe(@RequestBody Recipe recipe){
+        return d.updateRecipe(recipe.getRecipeid(),recipe.getRecipetext());
     }
 }
