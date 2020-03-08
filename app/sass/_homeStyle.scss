@@ -43,6 +43,7 @@ $main-color-hover: #ff9d00;
     min-height: 26px;
     width: 300px;
     border: 1px solid $main-color;
+    outline-color: $main-color;
   }
   #search-button {
     min-height: 30px;

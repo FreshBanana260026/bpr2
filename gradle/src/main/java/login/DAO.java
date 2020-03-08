@@ -1,5 +1,6 @@
 package login;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DAO {
     public DAO() {
@@ -37,4 +38,32 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return false;}
     }
 
+    public ArrayList<Recipe> getRecipes(String emailValue) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
+            Statement stmt = con.createStatement();
+            String sql = "select  * from assistant.recipes where email = \"" + emailValue + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Recipe> resultList = new ArrayList<>();
+            while(rs.next())
+                resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                //System.out.println(rs.getString(5));
+                //result = rs.getString(1);
+            con.close();
+            return resultList;
+        }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
+    }
+
+    public boolean addRecipe(String emailValue, String name, String category, String text) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
+            Statement stmt = con.createStatement();
+            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext) " +
+                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\")";
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception e){ System.out.println(e); return false;}
+    }
 }

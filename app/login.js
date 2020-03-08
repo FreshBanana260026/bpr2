@@ -51,6 +51,7 @@ angular.module('foodAssistant')
             const result = await res.json();
             if (result) {
                 statusService.setLoggedIn(true);
+                statusService.setEmail($scope.emailLogin);
                 $window.location.href = "#!home";
             }
         };
