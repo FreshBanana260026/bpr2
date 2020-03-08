@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
+
 @RestController
 public class LoginController {
 
@@ -28,6 +30,19 @@ public class LoginController {
     @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
     public boolean login(@RequestBody Login login) {
+        d.getRecipes(login.getEmail());
         return d.login(login.getEmail(), login.getPassword());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/getRecipes", method = RequestMethod.GET)
+    public ArrayList<Recipe> getRecipes(@RequestParam(value="email") String email) {
+        return d.getRecipes(email);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
+    public boolean addNewRecipe(@RequestBody Recipe recipe) {
+        return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext());
     }
 }

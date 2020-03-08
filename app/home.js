@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('foodAssistant')
-    .controller('HomeCtrl', ['$scope', '$window', '$compile', 'statusService', function($scope, $window, $compile, statusService) {
+    .controller('HomeCtrl', ['$scope', '$window', '$compile', '$http', 'statusService', function($scope, $window, $compile, $http, statusService) {
         if(!statusService.getLoggedIn()) {
             $window.location.href = "#!/";
         }
@@ -30,20 +30,20 @@ angular.module('foodAssistant')
                 '                <table>\n' +
                 '                    <tr>\n' +
                 '                        <td><b>Recipe name:</b></td>\n' +
-                '                        <td><input type="text" name="nickname" ng-model="nickname"></td>\n' +
+                '                        <td><input type="text" name="recipename" ng-model="recipename"></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
-                '                        <td><b>Ingredients:</b></td>\n' +
-                '                        <td><input type="text" name="email" ng-model="email"></td>\n' +
+                '                        <td><b>Category:</b></td>\n' +
+                '                        <td><input type="text" name="category" ng-model="category"></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
                 '                        <td><b>Recipe:</b></td>\n' +
-                '                        <td><textarea type="text" ng-model="recipeText" ng-blur="confirmMail()" id="recipeText"></textarea></td>\n' +
+                '                        <td><textarea type="text" name="recipetext" ng-model="recipetext" id="recipeText"></textarea></td>\n' +
                 '                    </tr>\n' +
                 '                </table>\n' +
                 '                <div class="bottom">\n' +
                 '                    <button id="regCancel" ng-click="closeRecipeForm()"><b>Cancel</b></button>\n' +
-                '                    <button id="regSubmit" ng-click=""><b>Register</b></button>\n' +
+                '                    <button id="regSubmit" ng-click="addNewRecipe()"><b>Submit</b></button>\n' +
                 '                </div>\n' +
                 '            </form>\n' +
                 '    </div>\n' +
@@ -58,6 +58,28 @@ angular.module('foodAssistant')
                 $('#recipe-modal').remove();
             });
         };
+        
+        $scope.addNewRecipe = function () {
+            const req = {
+                method: 'POST',
+                url: SERVER_URL + '/addNewRecipe',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext})
+            };
+
+            $http(req).then(function(res){
+                if (typeof $scope.getRecipes === "function") {
+                    $scope.getRecipes();
+                }
+            }, function(e){
+                console.log(e);
+            });
+
+            $('#recipe-modal').remove();
+        }
     }])
     .directive('topMenu', function () {
         return {

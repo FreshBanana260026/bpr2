@@ -20,6 +20,10 @@ angular.module('foodAssistant', ['ngRoute'])
           templateUrl : "random.html",
           controller : 'RandomCtrl',
       })
+      .when("/recipe", {
+          templateUrl : "recipe.html",
+          controller : 'RecipeCtrl',
+      })
       .otherwise({
           /*templateUrl : "login.html",
           controller : 'LoginCtrl'*/

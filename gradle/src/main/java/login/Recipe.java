@@ -2,19 +2,37 @@ package login;
 
 public class Recipe {
 
-    private final int recipeId;
+    private final String recipeid;
     private final String email;
-    private final String recipeName;
-    private final String recipeText;
+    private final String recipename;
+    private final String category;
+    private final String recipetext;
 
-    public Recipe(int recipeId,String email,String recipeName,String recipeText){
-        this.recipeId = recipeId;
+    public Recipe(String recipeid, String email, String recipename, String category, String recipetext) {
+        this.recipeid = recipeid;
         this.email = email;
-        this.recipeName = recipeName;
-        this.recipeText = recipeText;
+        this.recipename = recipename;
+        this.category = category;
+        this.recipetext = recipetext;
     }
 
-    public String getEmail(){return email;}
+    public String getRecipeid() {
+        return recipeid;
+    }
 
-    public int getRecipeId(){}
+    public String getEmail() {
+        return email;
+    }
+
+    public String getRecipename() {
+        return recipename;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getRecipetext() {
+        return recipetext;
+    }
 }

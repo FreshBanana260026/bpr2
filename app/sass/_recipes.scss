@@ -32,7 +32,7 @@
   height: calc(100% - 40px);
   float: left;
 
-  button {
+  #filter-search-button {
     float: right;
     height: 2.5em;
     background-color: $main-color;
@@ -40,9 +40,10 @@
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    outline: none;
   }
 
-  button:hover {
+  #filter-search-button:hover {
     background-color: $main-color-hover;
   }
 }
@@ -66,13 +67,75 @@
     align-items: center;
     margin: auto;
     padding: 0 10px;
+    cursor: pointer;
   }
 
   li:not(:last-child) {
     border-bottom: 1px solid black;
   }
+
+  li:hover {
+    color: $main-color;
+    font-weight: bold;
+  }
 }
 
 #recipe-list::-webkit-scrollbar {
   display: none;
+}
+
+#recipe-filters {
+  h1 {
+    text-align: center;
+  }
+
+  input {
+    border: 1px solid $main-color;
+    outline-color: $main-color;
+  }
+
+  #recipe-filter {
+    display: inline-block;
+    background-color: $main-color;
+    width: 100px;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: bold;
+    outline: none;
+  }
+
+  #recipe-filter:hover {
+    background-color: $main-color-hover;
+  }
+
+  #recipe-filter-wrapper:hover #filter-content {
+    display: block;
+  }
+
+  #filter-content {
+    display: none;
+    list-style-type: none;
+    background-color: $main-color;
+    color: #ffffff;
+    width: 100px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    border-radius: 0;
+    cursor: default;
+
+    .filter-option {
+      text-align: center;
+    }
+
+    .filter-option:hover {
+      background-color: $main-color-hover;
+    }
+  }
+
+  #recipe-filter-wrapper {
+    display: inline-block;
+  }
 }

@@ -3,38 +3,26 @@
     <div id="page-body">
         <div id="recipe-content">
             <div id="recipe-filters">
-                Search by name: <input type="text" name="" ng-model=""><br>
-                Search by recipe: <input type="text" name="" ng-model=""><br><br>
-                <button>Search</button>
+                <h1>Filter</h1>
+                Select filter:
+                <div id="recipe-filter-wrapper">
+                    <button id="recipe-filter">
+                        filter
+                    </button>
+                    <ul id="filter-content">
+                        <li class="filter-option">name</li>
+                        <li class="filter-option">ingredient</li>
+                        <li class="filter-option">category</li>
+                    </ul>
+                </div>
+                <br>
+                <!--<br>Search parameter: <input type="text" name="" ng-model=""><br><br>-->
+                <!--Search by ingredient:<br><input type="text" name="" ng-model=""><br><br>
+                Search by category:<br><input type="text" name="" ng-model=""><br><br>-->
+                <button id="filter-search-button">Search</button>
             </div>
             <ul id="recipe-list">
-                <li>Cokoladova omacka</li>
-                <li>Kuracie kridla na smotane</li>
-                <li>Mrkvovy spenat</li>
-                <li>Tavie koleno s kelom</li>
-                <li>Tarhona a 3 druhy ryby</li>
-                <li>Zemiakova kasa s konskou hlavou</li>
-                <li>Kapri chvost na spize</li>
-                <li>Mravencie hlavohrude s knedlikom</li>
-                <li>Duseny petrzlen s tavim hrbom</li>
-                <li>Vyprazane puncove rezy</li>
-                <li>Kuracie stehna v metovej omacke</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
-                <li>tri</li>
+                <li ng-repeat="recipe in recipesArray" ng-click="recipeClick(recipe)">{{recipe.recipename}}</li>
             </ul>
         </div>
     </div>
