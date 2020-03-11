@@ -47,7 +47,7 @@ public class DAO {
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Recipe> resultList = new ArrayList<>();
             while(rs.next())
-                resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
                 //System.out.println(rs.getString(5));
                 //result = rs.getString(1);
             con.close();
@@ -55,13 +55,13 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 
-    public boolean addRecipe(String emailValue, String name, String category, String text) {
+    public boolean addRecipe(String emailValue, String name, String category, String text, String ingrediences) {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext) " +
-                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\")";
+            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext,ingrediences) " +
+                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingrediences +"\")";
             stmt.executeUpdate(sql);
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
@@ -81,12 +81,12 @@ public class DAO {
         }
     }
 
-    public boolean updateRecipe(String id, String recipeText) {
+    public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingrediences) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "UPDATE assistant.recipes SET recipetext = " +recipeText+ " WHERE recipe id ="+ id +"";
+            String sql = "UPDATE assistant.recipes SET recipename = "+recipename+", category ="+ category +" recipetext = " +recipeText+ ", ingrediences = "+ ingrediences +" WHERE recipe id ="+ id +"";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {
