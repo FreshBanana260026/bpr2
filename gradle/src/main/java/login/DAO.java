@@ -55,13 +55,13 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 
-    public boolean addRecipe(String emailValue, String name, String category, String text, String ingrediences) {
+    public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients) {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext,ingrediences) " +
-                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingrediences +"\")";
+            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients) " +
+                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients +"\")";
             stmt.executeUpdate(sql);
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
@@ -81,12 +81,12 @@ public class DAO {
         }
     }
 
-    public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingrediences) {
+    public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingredients) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "UPDATE assistant.recipes SET recipename = "+recipename+", category ="+ category +" recipetext = " +recipeText+ ", ingrediences = "+ ingrediences +" WHERE recipe id ="+ id +"";
+            String sql = "UPDATE assistant.recipes SET recipename = "+recipename+", category ="+ category +" recipetext = " +recipeText+ ", ingredients = "+ ingredients +" WHERE recipe id ="+ id +"";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {

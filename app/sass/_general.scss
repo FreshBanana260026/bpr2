@@ -1,0 +1,24 @@
+@import "colors";
+
+.orange-button {
+  height: 2.5em;
+  background-color: $main-color;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  outline: none;
+}
+
+.orange-button:hover {
+  background-color: $main-color-hover;
+}
+
+[contenteditable="true"]:focus {
+  background-color: #ffffff;
+  outline: 1px solid $main-color;
+}
+
+.white {
+  color: #ffffff;
+}

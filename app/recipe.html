@@ -5,9 +5,9 @@
             <div id="recipe-text-area">
                 <h1>{{recipe.recipename}}</h1>
                 <p class="recipe-top"><b>Category:</b> <b class="white">{{recipe.category}}</b></p>
-                <p class="recipe-top"><b>Ingredients:</b> <b class="white">milk, water, soda, lemons</b></p>
-                <p class="recipe-text"><b>{{recipe.recipetext}}</b></p>
+                <p class="recipe-top"><b>Ingredients:</b> <b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b></p>
+                <div id="recipe-text" contenteditable="false">{{recipe.recipetext}}</div>
+                <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
             </div>
         </div>
-    </div>
-</div>
+    </div></div>

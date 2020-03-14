@@ -16,7 +16,6 @@
   display: block;
   width: calc(100% - 160px);
   height: calc(100% - 130px);
-  //margin: 30px;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 25px;
@@ -34,17 +33,6 @@
 
   #filter-search-button {
     float: right;
-    height: 2.5em;
-    background-color: $main-color;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    outline: none;
-  }
-
-  #filter-search-button:hover {
-    background-color: $main-color-hover;
   }
 }
 

@@ -40,11 +40,18 @@
     padding: 10px;
   }
 
-  .white {
+  .white-ingredient {
     color: #ffffff;
+    cursor: pointer;
+   }
+
+  .white-ingredient:hover {
+    color: $main-color-hover;
   }
 
-  .recipe-text {
+  #recipe-text {
     color: $menu-color;
+    font-weight: bold;
+    white-space: pre-wrap;
   }
 }

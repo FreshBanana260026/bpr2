@@ -37,6 +37,10 @@ angular.module('foodAssistant')
                 '                        <td><input type="text" name="category" ng-model="category"></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
+                '                        <td><b>Ingredients:</b></td>\n' +
+                '                        <td><input type="text" name="ingredients" ng-model="ingredients"></td>\n' +
+                '                    </tr>\n' +
+                '                    <tr>\n' +
                 '                        <td><b>Recipe:</b></td>\n' +
                 '                        <td><textarea type="text" name="recipetext" ng-model="recipetext" id="recipeText"></textarea></td>\n' +
                 '                    </tr>\n' +
@@ -67,7 +71,7 @@ angular.module('foodAssistant')
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext})
+                data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext, ingredients: $scope.ingredients})
             };
 
             $http(req).then(function(res){
