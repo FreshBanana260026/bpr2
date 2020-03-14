@@ -408,6 +408,30 @@ body a:hover {
   background-color: blueviolet;
 }
 
+#ingredients-form {
+  background-color: #ffffff;
+  height: 80%;
+  z-index: 2;
+  position: absolute;
+  margin: 0 auto;
+  width: 40%;
+  top: 10%;
+  left: 30%;
+}
+
+.add-ingredients {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  background-image: url("../pictures/plus.png");
+  background-size: 100%;
+  border: none;
+}
+
+.add-ingredients:hover {
+  background-image: url("../pictures/plushover.png");
+}
+
 #page-body {
   display: block;
   width: 100%;

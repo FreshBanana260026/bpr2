@@ -38,7 +38,7 @@ angular.module('foodAssistant')
                 '                    </tr>\n' +
                 '                    <tr>\n' +
                 '                        <td><b>Ingredients:</b></td>\n' +
-                '                        <td><input type="text" name="ingredients" ng-model="ingredients"></td>\n' +
+                '                        <td><button type="text" name="ingredients" ng-model="ingredients" class="add-ingredients" ng-click="ingredientsForm()"></button></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
                 '                        <td><b>Recipe:</b></td>\n' +
@@ -51,6 +51,15 @@ angular.module('foodAssistant')
                 '                </div>\n' +
                 '            </form>\n' +
                 '    </div>\n' +
+                '</div>';
+
+            const html = $compile(htmlString)($scope);
+            angular.element(document.body).append(html);
+        };
+
+        $scope.ingredientsForm = function () {
+            const htmlString = '\n' +
+                '<div id="ingredients-form">\n' +
                 '</div>';
 
             const html = $compile(htmlString)($scope);
