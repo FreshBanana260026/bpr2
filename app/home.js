@@ -70,9 +70,9 @@ angular.module('foodAssistant')
                         '<ul id="ingredients-list">\n' +
                             '<li ng-repeat="ing in ingredientsList track by $index"><b>{{ing}}</b> <button class="orange-button" ng-click="removeIngredient($index)">Remove</button>\n' +
                             '</li>' +
-                            '<button id="add-new-ingredient" ng-click="addToList()">\n' +
-                            '</button>' +
                         '</ul>' +
+                        '<button id="add-new-ingredient" ng-click="addToList()">\n' +
+                        '</button>' +
                     '</div>' +
                     '<div class="bottom-form dark-bottom">\n' +
                         '<button id="regCancel" ng-click="closeIngredientsForm()"><b>Cancel</b></button>\n' +

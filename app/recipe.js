@@ -85,8 +85,8 @@ angular.module('foodAssistant')
                                 '<b>{{ing}}</b> \n' +
                                 '<button class="orange-button" ng-click="removeIng($index)">Remove</button>\n' +
                             '</li>' +
-                        '<button id="add-new-ingredient" ng-click="addToIngredients()"></button>' +
                         '</ul>' +
+                        '<button id="add-new-ingredient" ng-click="addToIngredients()"></button>' +
                     '</div>' +
                     '<div class="bottom-form dark-bottom">\n' +
                         '<button id="regCancel" ng-click="closeIngredientsForm()"><b>Cancel</b></button>\n' +
