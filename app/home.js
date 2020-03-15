@@ -6,6 +6,7 @@ angular.module('foodAssistant')
             $window.location.href = "#!/";
         }
         let dropDown = true;
+        $scope.ingredientsList = [];
         $scope.openDropDown = function() {
             if (dropDown) {
                 $('.drop-down').fadeIn();
@@ -45,7 +46,7 @@ angular.module('foodAssistant')
                 '                        <td><textarea type="text" name="recipetext" ng-model="recipetext" id="recipeText"></textarea></td>\n' +
                 '                    </tr>\n' +
                 '                </table>\n' +
-                '                <div class="bottom">\n' +
+                '                <div class="bottom-form dark-bottom">\n' +
                 '                    <button id="regCancel" ng-click="closeRecipeForm()"><b>Cancel</b></button>\n' +
                 '                    <button id="regSubmit" ng-click="addNewRecipe()"><b>Submit</b></button>\n' +
                 '                </div>\n' +
@@ -60,6 +61,23 @@ angular.module('foodAssistant')
         $scope.ingredientsForm = function () {
             const htmlString = '\n' +
                 '<div id="ingredients-form">\n' +
+                    '<div id="reg-top"><b>Ingredients</b>\n' +
+                    '</div>' +
+                    '<div id="ingredient-content">\n' +
+                        '<div id="ingredient-adder">\n' +
+                            '<input id="ingredient-input" ng-model="ingredientInput">\n' +
+                        '</div>' +
+                        '<ul id="ingredients-list">\n' +
+                            '<li ng-repeat="ing in ingredientsList track by $index"><b>{{ing}}</b> <button class="orange-button" ng-click="removeIngredient($index)">Remove</button>\n' +
+                            '</li>' +
+                            '<button id="add-new-ingredient" ng-click="addToList()">\n' +
+                            '</button>' +
+                        '</ul>' +
+                    '</div>' +
+                    '<div class="bottom-form dark-bottom">\n' +
+                        '<button id="regCancel" ng-click="closeIngredientsForm()"><b>Cancel</b></button>\n' +
+                        '<button id="regSubmit" ng-click="saveIngredients()"><b>Save</b></button>\n' +
+                    '</div>\n' +
                 '</div>';
 
             const html = $compile(htmlString)($scope);
@@ -70,6 +88,30 @@ angular.module('foodAssistant')
             $('#recipe-modal').fadeOut(500, function () {
                 $('#recipe-modal').remove();
             });
+        };
+
+        $scope.closeIngredientsForm = function () {
+            $('#ingredients-form').fadeOut(500, function () {
+                $('#ingredients-form').remove();
+            });
+        };
+
+        $scope.addToList = function () {
+            $scope.ingredientsList.push($scope.ingredientInput);
+            $('#ingredient-input').val('');
+        };
+
+        $scope.removeIngredient = function (position) {
+            $scope.ingredientsList.splice(position, 1);
+        };
+
+        $scope.saveIngredients = function () {
+            let ingredientsString = '';
+            $scope.ingredientsList.forEach(ing => {
+                ingredientsString += ing + ',';
+            });
+            $scope.ingredients = ingredientsString;
+            $scope.closeIngredientsForm();
         };
         
         $scope.addNewRecipe = function () {
