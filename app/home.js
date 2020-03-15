@@ -110,7 +110,7 @@ angular.module('foodAssistant')
             $scope.ingredientsList.forEach(ing => {
                 ingredientsString += ing + ',';
             });
-            $scope.ingredients = ingredientsString;
+            $scope.ingredients = ingredientsString.slice(0, -1);
             $scope.closeIngredientsForm();
         };
         

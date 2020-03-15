@@ -72,7 +72,7 @@ public class DAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "DELETE FROM assistant.recipes WHERE recipeid = "+id+"";
+            String sql = "DELETE FROM assistant.recipes WHERE recipeid = \"" + id + "\"";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {

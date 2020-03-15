@@ -8,6 +8,7 @@
                 <p class="recipe-top"><b>Ingredients:</b> <b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b></p>
                 <div id="recipe-text" contenteditable="false">{{recipe.recipetext}}</div>
                 <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
+                <button id="deleteRecipe" class="orange-button" ng-click="deleteRecipe()">Delete recipe</button>
             </div>
         </div>
     </div></div>

@@ -2,6 +2,9 @@
 
 angular.module('foodAssistant')
     .controller('RecipesCtrl', ['$scope', '$window', '$compile', 'statusService', '$http', function($scope, $window, $compile, statusService, $http) {
+        if(!statusService.getLoggedIn()) {
+            $window.location.href = "#!/";
+        }
         $('.filter-option').click(function () {
             $('#recipe-filter').html(this.innerHTML);
         });
@@ -21,7 +24,6 @@ angular.module('foodAssistant')
         $scope.getRecipes = function () {
             $http.get(SERVER_URL + `/getRecipes?email=${statusService.getEmail()}`).then(function(response) {
                 $scope.recipesArray = response.data;
-                console.log($scope.recipesArray);
             });
         };
         $scope.getRecipes();

@@ -1,3 +1,25 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  margin: 0;
+  font-family: "Arial", Times, serif;
+}
+
+body a {
+  color: white;
+  text-decoration: none;
+}
+body a:hover {
+  font-weight: bold;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  outline-color: #ffb700;
+}
+
 .orange-button {
   height: 2.5em;
   background-color: #ffb700;
@@ -19,22 +41,6 @@
 
 .white {
   color: #ffffff;
-}
-
-html, body {
-  height: 100%;
-  width: 100%;
-  color: #fff;
-  margin: 0;
-  font-family: "Arial", Times, serif;
-}
-
-body a {
-  color: white;
-  text-decoration: none;
-}
-body a:hover {
-  font-weight: bold;
 }
 
 #wrapper {
@@ -246,7 +252,6 @@ body a:hover {
   min-height: 26px;
   width: 300px;
   border: 1px solid #ffb700;
-  outline-color: #ffb700;
 }
 #top-menu #search-button {
   min-height: 30px;
@@ -326,6 +331,7 @@ body a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  outline: none;
   cursor: pointer;
 }
 
@@ -680,6 +686,7 @@ body a:hover {
   color: #1d1d1d;
   font-weight: bold;
   white-space: pre-wrap;
+  font-family: "Arial", Times, serif;
 }
 
 /*# sourceMappingURL=style.css.map */

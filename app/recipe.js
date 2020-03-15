@@ -2,8 +2,14 @@
 
 angular.module('foodAssistant')
     .controller('RecipeCtrl', ['$scope', '$window', '$compile', 'statusService', '$http', function($scope, $window, $compile, statusService, $http) {
+        if(!statusService.getLoggedIn()) {
+            $window.location.href = "#!/";
+        }
         $scope.recipe = statusService.getRecipe();
-        $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');
+        if($scope.recipe.ingredients) {
+            $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');
+        }
+
         
         $scope.updateRecipe = function () {
             let button = $('#updateRecipe');
@@ -35,5 +41,22 @@ angular.module('foodAssistant')
         
         $scope.addToShoppingList = function (ingredient) {
             console.log(ingredient);
+        };
+
+        $scope.deleteRecipe = function () {
+/*            const request = {
+                mode: 'cors',
+                method: 'DELETE',
+                url: SERVER_URL + '/recipe',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                data: JSON.stringify($scope.recipe.recipeid)
+            };*/
+            $http.delete(SERVER_URL + '/recipe' + '?id= ' + $scope.recipe.recipeid).then(function(){
+                $window.location.href = "#!recipes";
+            }, function(e){
+                console.error(e);
+            });
         }
     }]);

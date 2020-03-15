@@ -1,5 +1,30 @@
 @import "colors";
 
+html, body {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  margin: 0;
+  font-family: "Arial", Times, serif;
+}
+
+body {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-weight:bold;
+  }
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  outline-color: $main-color;
+}
+
 .orange-button {
   height: 2.5em;
   background-color: $main-color;

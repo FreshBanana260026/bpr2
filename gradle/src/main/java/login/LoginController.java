@@ -47,9 +47,9 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
-    @RequestMapping(path = "/removeRecipe", method = RequestMethod.POST, consumes = "application/json")
-    public boolean removeOldRecipe(@RequestBody Recipe recipe){
-        return d.removeRecipe(recipe.getRecipeid());
+    @RequestMapping(path = "/recipe", method = RequestMethod.DELETE)
+    public boolean removeOldRecipe(@RequestParam(value="id", defaultValue="") String id){
+        return d.removeRecipe(id);
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
