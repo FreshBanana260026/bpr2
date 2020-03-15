@@ -261,7 +261,6 @@ body a:hover {
 
 #wrapper-home {
   background-color: #ffffff;
-  /*background-image: url('../pictures/asparagus.jpg');*/
   width: 100%;
   height: 100%;
   background-position: center;
@@ -281,9 +280,6 @@ body a:hover {
   background-color: #ffb700;
 }
 
-/*#side-menu:hover .drop-down{
-  display: block;
-}*/
 .drop-down {
   display: none;
   background-color: #ffb700;
