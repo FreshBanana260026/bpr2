@@ -87,6 +87,7 @@ body a:hover {
   border: none;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 #login input[type=submit]:hover {
   background-color: #ff9d00;
@@ -113,7 +114,6 @@ body a:hover {
   width: calc(100% - 40px);
   height: calc(100% - 40px);
   background-color: rgba(255, 255, 255, 0.4);
-  /*border-radius: 5px;*/
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 20px;
@@ -253,6 +253,7 @@ body a:hover {
   border: none;
   color: #ffffff;
   background-color: #ffb700;
+  cursor: pointer;
 }
 #top-menu #search-button:hover {
   background-color: #ff9d00;
@@ -313,6 +314,7 @@ body a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 #add-rec-button {
@@ -328,6 +330,7 @@ body a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 #add-rec-button:hover {
@@ -390,6 +393,7 @@ body a:hover {
   color: #ffffff;
   padding: 5px;
   width: 100px;
+  cursor: pointer;
 }
 .bottom-form #regCancel {
   float: left;
@@ -472,10 +476,11 @@ body a:hover {
   align-items: center;
   margin: auto;
   padding: 10px;
-  cursor: pointer;
+  cursor: default;
 }
 #ingredients-list li button {
   margin-left: auto;
+  cursor: pointer;
 }
 #ingredients-list li:not(:last-child) {
   border-bottom: 1px solid black;
@@ -496,6 +501,7 @@ body a:hover {
   background-image: url("../pictures/plus.png");
   background-size: 100%;
   outline: none;
+  cursor: pointer;
 }
 
 #add-new-ingredient:hover {
@@ -510,6 +516,7 @@ body a:hover {
   background-size: 100%;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .add-ingredients:hover {

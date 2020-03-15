@@ -50,6 +50,7 @@ $main-color-hover: #ff9d00;
     border: none;
     color: #ffffff;
     background-color: $main-color;
+    cursor: pointer;
   }
   #search-button:hover {
     background-color: $main-color-hover;
@@ -112,6 +113,7 @@ $main-color-hover: #ff9d00;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 #add-rec-button {
@@ -127,6 +129,7 @@ $main-color-hover: #ff9d00;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 #add-rec-button:hover {
@@ -196,6 +199,7 @@ $main-color-hover: #ff9d00;
     color: #ffffff;
     padding: 5px;
     width: 100px;
+    cursor: pointer;
   }
 
   #regCancel {
@@ -284,7 +288,7 @@ $main-color-hover: #ff9d00;
     align-items: center;
     margin: auto;
     padding: 10px;
-    cursor: pointer;
+    cursor: default;
 
     b {
 
@@ -292,6 +296,7 @@ $main-color-hover: #ff9d00;
 
     button {
       margin-left: auto;
+      cursor: pointer;
     }
   }
 
@@ -315,6 +320,7 @@ $main-color-hover: #ff9d00;
   background-image: url('../pictures/plus.png');
   background-size: 100%;
   outline: none;
+  cursor: pointer;
 }
 
 #add-new-ingredient:hover {
@@ -329,6 +335,7 @@ $main-color-hover: #ff9d00;
   background-size: 100%;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .add-ingredients:hover {
