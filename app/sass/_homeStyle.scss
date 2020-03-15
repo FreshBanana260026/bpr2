@@ -155,34 +155,6 @@ $main-color-hover: #ff9d00;
   animation-name: reg-animation;
   animation-duration: 0.4s;
 
-  .bottom {
-    background-color: $menu-color;
-    min-height: 40px;
-    padding: 5px 20px;
-
-    button {
-      height: 30px;
-      margin: 5px 0px;
-      background-color: $main-color;
-      border: none;
-      color: #ffffff;
-      padding: 5px;
-      width: 100px;
-    }
-
-    #regCancel {
-      float: left;
-    }
-
-    #regSubmit {
-      float: right;
-    }
-
-    button:hover {
-      background-color: $main-color-hover;
-    }
-  }
-
   table {
     width: 100%;
     padding: 20px;
@@ -212,6 +184,37 @@ $main-color-hover: #ff9d00;
   }
 }
 
+.bottom-form {
+  min-height: 40px;
+  padding: 5px 20px;
+
+  button {
+    height: 30px;
+    margin: 5px 0px;
+    background-color: $main-color;
+    border: none;
+    color: #ffffff;
+    padding: 5px;
+    width: 100px;
+  }
+
+  #regCancel {
+    float: left;
+  }
+
+  #regSubmit {
+    float: right;
+  }
+
+  button:hover {
+    background-color: $main-color-hover;
+  }
+}
+
+.dark-bottom {
+  background-color: $menu-color;
+}
+
 #random-body {
   display: block;
   width: 100%;
@@ -230,6 +233,94 @@ $main-color-hover: #ff9d00;
   left: 30%;
 }
 
+#ingredients-top {
+  height: 40px;
+  width: 100%;
+  background-color: $menu-color;
+  color: #ffffff;
+}
+
+#ingredient-content {
+  height: calc(100% - 80px);
+  width: 100%;
+  padding: 0px;
+  margin: 0;
+  color: black;
+}
+
+#ingredient-adder {
+  display: inline-block;
+  background-color: blueviolet;
+  height: 8%;
+  width: 100%;
+
+  input {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    background-color: #ffffd6;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: $main-color solid 2px;
+    outline: none;
+    font-weight: bold;
+  }
+}
+
+
+#ingredients-list {
+  display: inline-block;
+  background-color: #ffffff;
+  height: calc(92% - 40px);
+  width: calc(100% - 40px);
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  overflow-y: scroll;
+
+  li {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    cursor: pointer;
+
+    b {
+
+    }
+
+    button {
+      margin-left: auto;
+    }
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+}
+
+#ingredients-list::-webkit-scrollbar {
+  display: none;
+}
+
+#add-new-ingredient {
+  position: absolute;
+  bottom: 60px;
+  right: 30px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../pictures/plus.png');
+  background-size: 100%;
+  outline: none;
+}
+
+#add-new-ingredient:hover {
+  background-image: url('../pictures/plushover.png');
+}
+
 .add-ingredients {
   height: 20px;
   width: 20px;
@@ -237,6 +328,7 @@ $main-color-hover: #ff9d00;
   background-image: url('../pictures/plus.png');
   background-size: 100%;
   border: none;
+  outline: none;
 }
 
 .add-ingredients:hover {

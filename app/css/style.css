@@ -103,7 +103,7 @@ body a:hover {
 #login button:hover {
   background-color: #ff9d00;
 }
-#login .bottom {
+#login .bottom-form {
   text-align: center;
 }
 #login table {
@@ -151,12 +151,12 @@ body a:hover {
 .registration-content table input {
   width: 100%;
 }
-.registration-content .bottom {
+.registration-content .bottom-form {
   background-color: #1d1d1d;
   min-height: 40px;
   padding: 5px 20px;
 }
-.registration-content .bottom button {
+.registration-content .bottom-form button {
   height: 30px;
   margin: 5px 0px;
   background-color: #ffb700;
@@ -165,13 +165,13 @@ body a:hover {
   padding: 5px;
   width: 100px;
 }
-.registration-content .bottom #regCancel {
+.registration-content .bottom-form #regCancel {
   float: left;
 }
-.registration-content .bottom #regSubmit {
+.registration-content .bottom-form #regSubmit {
   float: right;
 }
-.registration-content .bottom button:hover {
+.registration-content .bottom-form button:hover {
   background-color: #ff9d00;
 }
 
@@ -355,29 +355,6 @@ body a:hover {
   animation-name: reg-animation;
   animation-duration: 0.4s;
 }
-.recipe-content .bottom {
-  background-color: #1d1d1d;
-  min-height: 40px;
-  padding: 5px 20px;
-}
-.recipe-content .bottom button {
-  height: 30px;
-  margin: 5px 0px;
-  background-color: #ffb700;
-  border: none;
-  color: #ffffff;
-  padding: 5px;
-  width: 100px;
-}
-.recipe-content .bottom #regCancel {
-  float: left;
-}
-.recipe-content .bottom #regSubmit {
-  float: right;
-}
-.recipe-content .bottom button:hover {
-  background-color: #ff9d00;
-}
 .recipe-content table {
   width: 100%;
   padding: 20px;
@@ -401,6 +378,33 @@ body a:hover {
   resize: none;
 }
 
+.bottom-form {
+  min-height: 40px;
+  padding: 5px 20px;
+}
+.bottom-form button {
+  height: 30px;
+  margin: 5px 0px;
+  background-color: #ffb700;
+  border: none;
+  color: #ffffff;
+  padding: 5px;
+  width: 100px;
+}
+.bottom-form #regCancel {
+  float: left;
+}
+.bottom-form #regSubmit {
+  float: right;
+}
+.bottom-form button:hover {
+  background-color: #ff9d00;
+}
+
+.dark-bottom {
+  background-color: #1d1d1d;
+}
+
 #random-body {
   display: block;
   width: 100%;
@@ -419,6 +423,85 @@ body a:hover {
   left: 30%;
 }
 
+#ingredients-top {
+  height: 40px;
+  width: 100%;
+  background-color: #1d1d1d;
+  color: #ffffff;
+}
+
+#ingredient-content {
+  height: calc(100% - 80px);
+  width: 100%;
+  padding: 0px;
+  margin: 0;
+  color: black;
+}
+
+#ingredient-adder {
+  display: inline-block;
+  background-color: blueviolet;
+  height: 8%;
+  width: 100%;
+}
+#ingredient-adder input {
+  height: calc(100% - 4px);
+  width: calc(100% - 4px);
+  background-color: #ffffd6;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: #ffb700 solid 2px;
+  outline: none;
+  font-weight: bold;
+}
+
+#ingredients-list {
+  display: inline-block;
+  background-color: #ffffff;
+  height: calc(92% - 40px);
+  width: calc(100% - 40px);
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  overflow-y: scroll;
+}
+#ingredients-list li {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+  cursor: pointer;
+}
+#ingredients-list li button {
+  margin-left: auto;
+}
+#ingredients-list li:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+#ingredients-list::-webkit-scrollbar {
+  display: none;
+}
+
+#add-new-ingredient {
+  position: absolute;
+  bottom: 60px;
+  right: 30px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  background-image: url("../pictures/plus.png");
+  background-size: 100%;
+  outline: none;
+}
+
+#add-new-ingredient:hover {
+  background-image: url("../pictures/plushover.png");
+}
+
 .add-ingredients {
   height: 20px;
   width: 20px;
@@ -426,6 +509,7 @@ body a:hover {
   background-image: url("../pictures/plus.png");
   background-size: 100%;
   border: none;
+  outline: none;
 }
 
 .add-ingredients:hover {
@@ -474,7 +558,7 @@ body a:hover {
   color: black;
   padding: 0;
   width: 60%;
-  height: 100%;
+  height: 80%;
   overflow-y: scroll;
   margin: 0;
 }
