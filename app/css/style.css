@@ -688,5 +688,9 @@ input, textarea {
   white-space: pre-wrap;
   font-family: "Arial", Times, serif;
 }
+#recipe-wrap #modifyIngredients {
+  height: 15px;
+  width: 15px;
+}
 
 /*# sourceMappingURL=style.css.map */

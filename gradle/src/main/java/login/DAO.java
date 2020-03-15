@@ -86,7 +86,7 @@ public class DAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
             Statement stmt = con.createStatement();
-            String sql = "UPDATE assistant.recipes SET recipename = "+recipename+", category ="+ category +" recipetext = " +recipeText+ ", ingredients = "+ ingredients +" WHERE recipe id ="+ id +"";
+            String sql = "UPDATE assistant.recipes SET recipename = \"" + recipename + "\", category = \"" + category + "\", recipetext = \"" + recipeText + "\", ingredients = \"" + ingredients + "\" WHERE recipeid = \"" + id + "\";";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {

@@ -3,9 +3,9 @@
     <div id="recipe-div">
         <div id="recipe-wrap">
             <div id="recipe-text-area">
-                <h1>{{recipe.recipename}}</h1>
-                <p class="recipe-top"><b>Category:</b> <b class="white">{{recipe.category}}</b></p>
-                <p class="recipe-top"><b>Ingredients:</b> <b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b></p>
+                <h1 id="recipe-name">{{recipe.recipename}}</h1>
+                <p class="recipe-top"><b>Category:</b> <b id="recipe-category" class="white">{{recipe.category}}</b></p>
+                <p class="recipe-top"><b>Ingredients: </b><b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b> <button id="modifyIngredients" class="add-ingredients" ng-click="modifyIngredientsForm()"></button></p>
                 <div id="recipe-text" contenteditable="false">{{recipe.recipetext}}</div>
                 <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
                 <button id="deleteRecipe" class="orange-button" ng-click="deleteRecipe()">Delete recipe</button>

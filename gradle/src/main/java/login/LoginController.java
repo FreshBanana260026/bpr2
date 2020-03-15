@@ -53,7 +53,7 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
-    @RequestMapping(path = "/updateRecipe", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(path = "/updateRecipe", method = RequestMethod.PUT, consumes = "application/json")
     public boolean updateOldRecipe(@RequestBody Recipe recipe){
         return d.updateRecipe(recipe.getRecipeid(),recipe.getRecipetext(), recipe.getRecipename(), recipe.getCategory(), recipe.getIngredients());
     }
