@@ -80,6 +80,7 @@
   input {
     border: 1px solid $main-color;
     outline-color: $main-color;
+    width: 180px;
   }
 
   #recipe-filter {
@@ -125,5 +126,75 @@
 
   #recipe-filter-wrapper {
     display: inline-block;
+  }
+}
+
+#search-result {
+  background-color: $menu-color;
+  height: calc(80% - 40px);
+  width: calc(40% - 80px);
+  z-index: 2;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  top: 10%;
+  left: 30%;
+  border-radius: 25px;
+
+  ul {
+    height: calc(80% - 20px);
+    width: calc(100% - 80px);
+    margin: 10px 40px;
+    padding: 0;
+    list-style: none;
+    overflow-y: scroll;
+
+    li {
+      display: flex;
+      min-height: 40px;
+      font-size: 20px;
+      align-items: center;
+      margin: auto;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px solid white;
+    }
+
+    li:hover {
+      color: $main-color;
+      font-weight: bold;
+    }
+  }
+
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  #search-result-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: $main-color;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+
+  #search-result-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
   }
 }

@@ -16,6 +16,7 @@ angular.module('foodAssistant')
             let text = $('#recipe-text');
             let name = $('#recipe-name');
             let category = $('#recipe-category');
+            let ingredientButton = $('#modifyIngredients');
             if(button.html() === 'Update recipe') {
                 text.css("background-color", "white");
                 text.attr('contenteditable','true');
@@ -23,6 +24,7 @@ angular.module('foodAssistant')
                 name.attr('contenteditable','true');
                 category.css("background-color", 'rgba(255,255,255,0.1)');
                 category.attr('contenteditable','true');
+                ingredientButton.show();
                 button.html('Send');
             } else {
                 const request = {
@@ -45,6 +47,7 @@ angular.module('foodAssistant')
                 name.attr('contenteditable','false');
                 category.css("background-color", "transparent");
                 category.attr('contenteditable','false');
+                ingredientButton.hide();
                 button.html('Update recipe');
             }
         };

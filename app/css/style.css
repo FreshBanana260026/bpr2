@@ -20,6 +20,10 @@ input, textarea {
   outline-color: #ffb700;
 }
 
+button {
+  cursor: pointer;
+}
+
 .orange-button {
   height: 2.5em;
   background-color: #ffb700;
@@ -598,6 +602,7 @@ input, textarea {
 #recipe-filters input {
   border: 1px solid #ffb700;
   outline-color: #ffb700;
+  width: 180px;
 }
 #recipe-filters #recipe-filter {
   display: inline-block;
@@ -636,6 +641,69 @@ input, textarea {
 }
 #recipe-filters #recipe-filter-wrapper {
   display: inline-block;
+}
+
+#search-result {
+  background-color: #1d1d1d;
+  height: calc(80% - 40px);
+  width: calc(40% - 80px);
+  z-index: 2;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  top: 10%;
+  left: 30%;
+  border-radius: 25px;
+}
+#search-result ul {
+  height: calc(80% - 20px);
+  width: calc(100% - 80px);
+  margin: 10px 40px;
+  padding: 0;
+  list-style: none;
+  overflow-y: scroll;
+}
+#search-result ul li {
+  display: flex;
+  min-height: 40px;
+  font-size: 20px;
+  align-items: center;
+  margin: auto;
+  padding: 0 10px;
+  cursor: pointer;
+}
+#search-result ul li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+#search-result ul li:hover {
+  color: #ffb700;
+  font-weight: bold;
+}
+#search-result ul::-webkit-scrollbar {
+  display: none;
+}
+#search-result #search-result-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffb700;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+#search-result #search-result-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 #recipe-div {
@@ -689,6 +757,7 @@ input, textarea {
   font-family: "Arial", Times, serif;
 }
 #recipe-wrap #modifyIngredients {
+  display: none;
   height: 15px;
   width: 15px;
 }

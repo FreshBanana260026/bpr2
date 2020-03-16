@@ -25,6 +25,10 @@ input, textarea {
   outline-color: $main-color;
 }
 
+button {
+  cursor: pointer;
+}
+
 .orange-button {
   height: 2.5em;
   background-color: $main-color;

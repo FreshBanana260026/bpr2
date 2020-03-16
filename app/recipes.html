@@ -3,7 +3,7 @@
     <div id="page-body">
         <div id="recipe-content">
             <div id="recipe-filters">
-                <h1>Filter</h1>
+                <h1>Search</h1>
                 Select filter:
                 <div id="recipe-filter-wrapper">
                     <button id="recipe-filter">
@@ -16,10 +16,10 @@
                     </ul>
                 </div>
                 <br>
-                <!--<br>Search parameter: <input type="text" name="" ng-model=""><br><br>-->
+                <br>Search parameter: <input type="text" name="search" ng-model="searchParameter"><br><br>
                 <!--Search by ingredient:<br><input type="text" name="" ng-model=""><br><br>
                 Search by category:<br><input type="text" name="" ng-model=""><br><br>-->
-                <button id="filter-search-button" class="orange-button">Search</button>
+                <button id="filter-search-button" class="orange-button" ng-click="searchRecipes()">Search</button>
             </div>
             <ul id="recipe-list">
                 <li ng-repeat="recipe in recipesArray" ng-click="recipeClick(recipe)">{{recipe.recipename}}</li>
