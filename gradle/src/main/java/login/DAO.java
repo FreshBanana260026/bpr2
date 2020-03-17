@@ -16,7 +16,6 @@ public class DAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static DAO getInstance() {
@@ -46,10 +45,6 @@ public class DAO {
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
             String result = rs.getString(1);
-            /*while(rs.next())
-                //System.out.println(rs.getString(1));
-                result = rs.getString(1);*/
-            //connection.close();
             return result.equals(password);
         }catch(Exception e){ System.out.println(e); return false;}
     }
@@ -113,6 +108,18 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return false;}
     }
 
+    public ArrayList<Friend> getFriends (String emailValue) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "select  * from assistant.friends where email = \"" + emailValue + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Friend> resultList = new ArrayList<>();
+            while(rs.next())
+                resultList.add(new Friend(rs.getString(1), rs.getString(2)));
+            return resultList;
+        }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
+    }
+
     public boolean createNotification(String category, String recipient, String origin, String content) {
         try{
             Statement stmt = connection.createStatement();
@@ -121,5 +128,17 @@ public class DAO {
             stmt.executeUpdate(sql);
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
+    }
+
+    public ArrayList<Notification> getNotifications (String emailValue) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "select  * from assistant.notifications where email = \"" + emailValue + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Notification> resultList = new ArrayList<>();
+            while(rs.next())
+                resultList.add(new Notification(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            return resultList;
+        }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 }

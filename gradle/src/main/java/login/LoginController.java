@@ -65,8 +65,20 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/notifications", method = RequestMethod.GET)
+    public ArrayList<Friend> getFriends(@RequestParam(value = "email") String email) {
+        return d.getFriends(email);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(path = "/notification", method = RequestMethod.POST, consumes = "application/json")
     public boolean createNotification(@RequestBody Notification notification) {
         return d.createNotification(notification.getCategory(), notification.getRecipient(), notification.getOrigin(), notification.getContent());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/notifications", method = RequestMethod.GET)
+    public ArrayList<Notification> getNotifications(@RequestParam(value = "email") String email) {
+        return d.getNotifications(email);
     }
 }
