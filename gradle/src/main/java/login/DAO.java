@@ -3,14 +3,32 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DAO {
-    public DAO() {
+
+    private static DAO instance = null;
+    private Connection connection;
+
+    private DAO() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static DAO getInstance() {
+        if (instance == null) {
+            instance = new DAO();
+        }
+        return instance;
     }
 
     public boolean connect(String emailValue, String password, String nickname) {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "INSERT INTO assistant.userlogin (email, userpassword, nickname) " +
                     "VALUES (\"" + emailValue + "\", \"" + password + "\", \"" + nickname + "\")";
             stmt.executeUpdate(sql);
@@ -23,9 +41,7 @@ public class DAO {
 
     public boolean login(String emailValue, String password) {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "select  userpassword from assistant.userlogin where email = \"" + emailValue + "\"";
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
@@ -33,16 +49,14 @@ public class DAO {
             /*while(rs.next())
                 //System.out.println(rs.getString(1));
                 result = rs.getString(1);*/
-            con.close();
+            //connection.close();
             return result.equals(password);
         }catch(Exception e){ System.out.println(e); return false;}
     }
 
     public ArrayList<Recipe> getRecipes(String emailValue) {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "select  * from assistant.recipes where email = \"" + emailValue + "\"";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Recipe> resultList = new ArrayList<>();
@@ -50,16 +64,14 @@ public class DAO {
                 resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
                 //System.out.println(rs.getString(5));
                 //result = rs.getString(1);
-            con.close();
+            //connection.close();
             return resultList;
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 
     public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients) {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients) " +
                     "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients +"\")";
             stmt.executeUpdate(sql);
@@ -69,9 +81,7 @@ public class DAO {
 
     public boolean removeRecipe(String id) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "DELETE FROM assistant.recipes WHERE recipeid = \"" + id + "\"";
             stmt.executeUpdate(sql);
             return true;
@@ -83,9 +93,7 @@ public class DAO {
 
     public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingredients) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant", "root", "Pass123!");
-            Statement stmt = con.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "UPDATE assistant.recipes SET recipename = \"" + recipename + "\", category = \"" + category + "\", recipetext = \"" + recipeText + "\", ingredients = \"" + ingredients + "\" WHERE recipeid = \"" + id + "\";";
             stmt.executeUpdate(sql);
             return true;
@@ -93,5 +101,25 @@ public class DAO {
             System.out.println(e);
             return false;
         }
+    }
+
+    public boolean addFriend(String userEmail, String friendEmail) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "INSERT INTO assistant.friends (useremail, friendemail) " +
+                    "VALUES (\"" + userEmail + "\", \"" + friendEmail + "\")";
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception e){ System.out.println(e); return false;}
+    }
+
+    public boolean createNotification(String category, String recipient, String origin, String content) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "INSERT INTO assistant.friends (category, recipient, origin, content) " +
+                    "VALUES (\"" + category + "\", \"" + recipient + "\", \"" + origin + "\", \"" + content + "\")";
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception e){ System.out.println(e); return false;}
     }
 }

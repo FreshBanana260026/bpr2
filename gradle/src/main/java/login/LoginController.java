@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @RestController
 public class LoginController {
 
-    DAO d = new DAO();
+    DAO d = DAO.getInstance();
 
     /*@CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(path = "/login2", method = RequestMethod.GET)
@@ -56,5 +56,17 @@ public class LoginController {
     @RequestMapping(path = "/updateRecipe", method = RequestMethod.PUT, consumes = "application/json")
     public boolean updateOldRecipe(@RequestBody Recipe recipe){
         return d.updateRecipe(recipe.getRecipeid(),recipe.getRecipetext(), recipe.getRecipename(), recipe.getCategory(), recipe.getIngredients());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/friend", method = RequestMethod.POST, consumes = "application/json")
+    public boolean addFriend(@RequestBody Friend friend) {
+        return d.addFriend(friend.getUserEmail(), friend.getFriendEmail());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/notification", method = RequestMethod.POST, consumes = "application/json")
+    public boolean createNotification(@RequestBody Notification notification) {
+        return d.createNotification(notification.getCategory(), notification.getRecipient(), notification.getOrigin(), notification.getContent());
     }
 }

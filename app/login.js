@@ -32,6 +32,7 @@ angular.module('foodAssistant')
                 });
                 const content = await res.json();
                 console.log(content);
+                $scope.closeRegForm();
             } else {
                 console.log('not matching info')
             }
