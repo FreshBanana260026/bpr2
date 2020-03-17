@@ -765,4 +765,133 @@ button {
   width: 15px;
 }
 
+#friends-wrapper {
+  display: flex;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+}
+
+#friends-list {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 40px;
+  height: calc(100% - 80px);
+  width: calc(20% - 80px);
+  box-shadow: 5px 0px 8px 4px rgba(2, 2, 2, 0.4);
+  list-style: none;
+  z-index: 1;
+  overflow-y: scroll;
+  background-color: #1d1d1d;
+}
+#friends-list li {
+  display: flex;
+  min-height: 40px;
+  font-size: 20px;
+  align-items: center;
+  margin: auto;
+  padding: 0 10px;
+  cursor: pointer;
+}
+#friends-list li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+#friends-list li:hover {
+  color: #ffb700;
+  font-weight: bold;
+}
+
+/*#friends-list::-webkit-scrollbar {
+  width: 10px;
+}*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #878787;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffb700;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff9d00;
+}
+
+#friends-search {
+  display: inline-block;
+  width: 80%;
+  height: 100%;
+  vertical-align: top;
+}
+
+#add-friend-form {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  background-image: url(../pictures/plus.png);
+  background-size: 100%;
+  border: none;
+  outline: none;
+}
+
+#add-friend-form:hover {
+  background-image: url(../pictures/plushover.png);
+}
+
+#friend-form {
+  height: calc(30% - 40px);
+  width: calc(40% - 80px);
+  z-index: 2;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  top: 35%;
+  left: 30%;
+  box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
+}
+
+#friend-form-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  background-color: #1d1d1d;
+  font-weight: bold;
+}
+
+#friend-form-middle {
+  color: black;
+  font-weight: bold;
+  padding: 20px;
+  height: calc(80% - 40px);
+}
+
+#friend-form-bottom {
+  height: 10%;
+  background-color: #1d1d1d;
+}
+
+#friend-form-buttons {
+  height: 10%;
+  width: calc(100% - 40px);
+  bottom: 10%;
+  position: absolute;
+  left: 0;
+  padding: 20px;
+}
+#friend-form-buttons #friend-form-left-button {
+  float: left;
+}
+#friend-form-buttons #friend-form-right-button {
+  float: right;
+}
+
 /*# sourceMappingURL=style.css.map */
