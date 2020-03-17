@@ -65,7 +65,7 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
-    @RequestMapping(path = "/notifications", method = RequestMethod.GET)
+    @RequestMapping(path = "/friends", method = RequestMethod.GET)
     public ArrayList<Friend> getFriends(@RequestParam(value = "email") String email) {
         return d.getFriends(email);
     }

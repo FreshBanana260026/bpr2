@@ -111,7 +111,7 @@ public class DAO {
     public ArrayList<Friend> getFriends (String emailValue) {
         try{
             Statement stmt = connection.createStatement();
-            String sql = "select  * from assistant.friends where email = \"" + emailValue + "\"";
+            String sql = "select  * from assistant.friends where useremail = \"" + emailValue + "\"";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Friend> resultList = new ArrayList<>();
             while(rs.next())
@@ -123,7 +123,7 @@ public class DAO {
     public boolean createNotification(String category, String recipient, String origin, String content) {
         try{
             Statement stmt = connection.createStatement();
-            String sql = "INSERT INTO assistant.friends (category, recipient, origin, content) " +
+            String sql = "INSERT INTO assistant.notifications (category, recipient, origin, content) " +
                     "VALUES (\"" + category + "\", \"" + recipient + "\", \"" + origin + "\", \"" + content + "\")";
             stmt.executeUpdate(sql);
             return true;
@@ -133,7 +133,7 @@ public class DAO {
     public ArrayList<Notification> getNotifications (String emailValue) {
         try{
             Statement stmt = connection.createStatement();
-            String sql = "select  * from assistant.notifications where email = \"" + emailValue + "\"";
+            String sql = "select  * from assistant.notifications where recipient = \"" + emailValue + "\"";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Notification> resultList = new ArrayList<>();
             while(rs.next())

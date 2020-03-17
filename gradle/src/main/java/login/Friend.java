@@ -1,19 +1,19 @@
 package login;
 
 public class Friend {
-    private final String userEmail;
-    private final String friendEmail;
+    private final String useremail;
+    private final String friendemail;
 
-    public Friend(String userEmail, String friendEmail) {
-        this.userEmail = userEmail;
-        this.friendEmail = friendEmail;
+    public Friend(String useremail, String friendemail) {
+        this.useremail = useremail;
+        this.friendemail = friendemail;
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return useremail;
     }
 
     public String getFriendEmail() {
-        return friendEmail;
+        return friendemail;
     }
 }
