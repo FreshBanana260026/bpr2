@@ -23,7 +23,7 @@ angular.module('foodAssistant')
 
         $interval(function(){
             $http.get(SERVER_URL + `/notifications?email=${statusService.getEmail()}`).then(function(response) {
-                $scope.notificationsArr = response.data;
+                $scope.notificationsArr = response.data.reverse();
             });
         }, 3000);
 
@@ -204,7 +204,7 @@ angular.module('foodAssistant')
             else if ($scope.currentNotification.category === 'recipe') {
                 $http.get(SERVER_URL + '/recipe?id=' + $scope.currentNotification.content).then(function (result) {
                     $http.post(SERVER_URL + '/addNewRecipe', JSON.stringify({email:statusService.getEmail(), recipename:result.data.recipename, category: result.data.category, recipetext: result.data.recipetext, ingredients: result.data.ingredients})).then(function () {
-                        statusText.text('The recipe was successfully added!');
+                        statusText.text('Confirmation was successful!');
                         statusText.css('color', '#009900');
                     }).catch(function (e) {
                         statusText.text('Error! Try again later!');
