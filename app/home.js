@@ -1,21 +1,30 @@
 'use strict';
 
 angular.module('foodAssistant')
-    .controller('HomeCtrl', ['$scope', '$window', '$compile', '$http', 'statusService', function($scope, $window, $compile, $http, statusService) {
+    .controller('HomeCtrl', ['$scope', '$window', '$compile', '$http', 'statusService', '$interval', function($scope, $window, $compile, $http, statusService, $interval) {
         if(!statusService.getLoggedIn()) {
             $window.location.href = "#!/";
         }
         let dropDown = true;
+        let notificationDropDown = true;
         $scope.ingredientsList = [];
         $scope.openDropDown = function() {
             if (dropDown) {
                 $('.drop-down').fadeIn();
+                $('#side-menu').css('background-color', '#FFB700');
                 dropDown = false;
             } else {
                 $('.drop-down').fadeOut();
+                $('#side-menu').css('background-color', 'transparent');
                 dropDown = true;
             }
         };
+
+        $interval(function(){
+            $http.get(SERVER_URL + `/notifications?email=${statusService.getEmail()}`).then(function(response) {
+                $scope.notificationsArr = response.data;
+            });
+        }, 3000);
 
         $scope.logOut = function() {
             statusService.setLoggedIn(false);
@@ -134,7 +143,66 @@ angular.module('foodAssistant')
             });
 
             $('#recipe-modal').remove();
-        }
+        };
+
+        $scope.notificationMenu = function() {
+            if(notificationDropDown === true) {
+                $('#notifications-drop-down').show();
+                notificationDropDown = false;
+            } else {
+                $('#notifications-drop-down').hide();
+                notificationDropDown = true;
+            }
+
+        };
+        
+        $scope.notificationClick = function (notification) {
+            
+            if (document.getElementById('notification-popup')) {
+                $('#notification-popup').remove();
+            }
+
+            const htmlString = '\n' +
+                '<div id="notification-popup">\n' +
+                    '<div id="notification-top"><b>Notification</b>\n' +
+                    '</div>' +
+                    '<div id="notification-middle">\n' +
+                        `You have received a new ${notification.category} ` + '\n' +
+                        `from the user: ${notification.origin}.<br><br>` + '\n' +
+                        `Content: ${notification.content}<br><br>` + '\n' +
+                        `<button class="orange-button" ng-click="confirmFriendRequest('${notification.origin}')">`+'Confirm</button>\n' +
+                        `<button class="orange-button" ng-click="deleteFriendRequest('${notification.id}')">` + 'Delete</button>\n' +
+                    '</div>' +
+                    '<div id="notification-bottom">\n' +
+                        '<button class="orange-button" ng-click="closeNotificationPopup()">Close</button>\n' +
+                    '</div>' +
+                '</div>';
+
+            const html = $compile(htmlString)($scope);
+            angular.element(document.body).append(html);
+        };
+        
+        $scope.closeNotificationPopup = function () {
+            $('#notification-popup').fadeOut(500, function () {
+                $('#notification-popup').remove();
+            });
+        };
+
+        $scope.confirmFriendRequest = function (frEmail) {
+            $http.post(SERVER_URL + '/friend', {useremail: statusService.getEmail(), friendemail: frEmail}).then(function(){
+                $scope.closeNotificationPopup();
+            }, function(e){
+                console.error(e);
+            });
+        };
+
+        $scope.deleteFriendRequest = function (id) {
+            $http.delete(SERVER_URL + '/notifications' + '?id= ' + id).then(function(){
+                $scope.closeNotificationPopup();
+            }, function(e){
+                console.error(e);
+            });
+        };
     }])
     .directive('topMenu', function () {
         return {

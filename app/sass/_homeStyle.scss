@@ -9,9 +9,9 @@ $main-color-hover: #ff9d00;
   margin: 0;
   padding: 0;
   float: right;
-  overflow: hidden;
+  overflow: visible;
 
-  ul {
+  #inline-menu {
     float: left;
     display: inline;
     list-style-type: none;
@@ -74,13 +74,13 @@ $main-color-hover: #ff9d00;
 }
 
 #side-menu:hover {
-  background-color: $main-color;
+  background-color: $main-color !important;
 }
 
 .drop-down {
   display: none;
   background-color: $main-color;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 60px;
   right: 0px;
@@ -337,4 +337,101 @@ $main-color-hover: #ff9d00;
 
 .add-ingredients:hover {
   background-image: url('../pictures/plushover.png');
+}
+
+#notifications-wrapper {
+  display: block;
+  float: right;
+  position: relative;
+}
+
+#notifications-button {
+  display: flex;
+  width: 90px;
+  height: 60px;
+  float: right;
+  cursor: pointer;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#notifications-button:hover {
+  color: $main-color;
+}
+
+#notifications-drop-down {
+  float: left;
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 10px;
+  width: 290px;
+  height: 200px;
+  position: absolute;
+  top: 60px;
+  left: -100px;
+  background-color: #ffffff;
+  box-shadow: -5px 5px 16px 0px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  overflow-y: scroll;
+
+  li {
+    color: $menu-color;
+    font-weight: bold;
+    display: flex;
+    min-height: 40px;
+    font-size: 20px;
+    align-items: center;
+    margin: auto;
+    padding: 0 10px;
+    cursor: pointer;
+    justify-content: center;
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid $menu-color;
+  }
+
+  li:hover {
+    color: $main-color;
+    font-weight: bold;
+  }
+}
+
+#notification-popup {
+  height: calc(60% - 40px);
+  width: calc(40% - 80px);
+  z-index: 2;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  top: 20%;
+  left: 30%;
+  box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
+
+  #notification-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    background-color: $menu-color;
+    font-weight: bold;
+  }
+
+  #notification-middle {
+    color: black;
+    font-weight: bold;
+    padding: 20px;
+    height: calc(80% - 40px);
+    background-color: #ffffff;
+  }
+
+  #notification-bottom {
+    display: flex;
+    height: 10%;
+    background-color: $menu-color;
+    justify-content: center;
+    align-items: center;
+  }
 }

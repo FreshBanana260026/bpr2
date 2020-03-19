@@ -9,7 +9,6 @@ angular.module('foodAssistant')
         $scope.getFriends = function () {
             $http.get(SERVER_URL + `/friends?email=${statusService.getEmail()}`).then(function(response) {
                 $scope.friendsArray = response.data;
-                console.log($scope.friendsArray);
             }).then(function (e) {
                 console.error(e);
             });
@@ -44,7 +43,7 @@ angular.module('foodAssistant')
         };
 
         $scope.sendFriendRequest = function () {
-            $http.post(SERVER_URL + '/notification', JSON.stringify({category: "friend", recipient: $scope.recipientData, origin: statusService.getEmail(), content: "You have a new friend request!"})).then(function (result) {
+            $http.post(SERVER_URL + '/notification', JSON.stringify({category: "friend request", recipient: $scope.recipientData, origin: statusService.getEmail(), content: "You have a new friend request!"})).then(function (result) {
                 $scope.closeFriendForm();
                 console.log(result);
             });

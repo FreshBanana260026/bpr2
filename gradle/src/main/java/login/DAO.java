@@ -141,4 +141,16 @@ public class DAO {
             return resultList;
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
+
+    public boolean deleteNotification(String id) {
+        try {
+            Statement stmt = connection.createStatement();
+            String sql = "DELETE FROM assistant.notifications WHERE id = \"" + id + "\"";
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 }

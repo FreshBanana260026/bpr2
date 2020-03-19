@@ -1,5 +1,5 @@
 <div id="top-menu">
-        <ul>
+        <ul id="inline-menu">
             <li><a href="" class="non-click"><img src="favicon.ico"></a></li>
             <li><a href="#!home">Home</a></li>
             <li><a href="#!recipes">Recipes</a></li>
@@ -18,4 +18,11 @@
             </div>
         </div>
         <button id="add-rec-button" ng-click="recipeForm()"></button>
+        <div id="notifications-wrapper">
+            <div id="notifications-button" ng-click="notificationMenu()"><b>Notifications</b></div>
+            <ul id="notifications-drop-down">
+                <li ng-repeat="notification in notificationsArr" ng-click="notificationClick(notification)">{{notification.category}}</li>
+            </ul>
+        </div>
+
     </div>
