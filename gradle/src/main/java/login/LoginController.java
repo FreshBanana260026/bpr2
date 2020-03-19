@@ -41,6 +41,12 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/recipe", method = RequestMethod.GET)
+    public Recipe getRecipe(@RequestParam(value = "id") String id) {
+        return d.getRecipe(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
     public boolean addNewRecipe(@RequestBody Recipe recipe) {
         return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext(), recipe.getIngredients());

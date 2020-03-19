@@ -8,6 +8,7 @@ angular.module('foodAssistant')
         let dropDown = true;
         let notificationDropDown = true;
         $scope.ingredientsList = [];
+        $scope.currentNotification = {};
         $scope.openDropDown = function() {
             if (dropDown) {
                 $('.drop-down').fadeIn();
@@ -157,6 +158,7 @@ angular.module('foodAssistant')
         };
         
         $scope.notificationClick = function (notification) {
+            $scope.currentNotification = notification;
             
             if (document.getElementById('notification-popup')) {
                 $('.notification-popup').remove();
@@ -168,9 +170,9 @@ angular.module('foodAssistant')
                     '</div>' +
                     '<div id="notification-middle">\n' +
                         `You have received a new ${notification.category} ` + '\n' +
-                        `from the user: ${notification.origin}.<br><br>` + '\n' +
-                        `Content: ${notification.content}<br><br>` + '\n' +
-                        `<button class="orange-button" ng-click="confirmFriendRequest('${notification.origin}')">`+'Confirm</button>\n' +
+                        `from the user: ${notification.origin}.<br><br><br>` + '\n' +
+                        `<span id="recipe-status">What would you like to do?</span><br><br>` + '\n' +
+                        `<button class="orange-button" ng-click="confirmRequest()">`+'Confirm</button>\n' +
                         `<button class="orange-button" ng-click="deleteFriendRequest('${notification.id}')">` + 'Delete</button>\n' +
                     '</div>' +
                     '<div id="notification-bottom">\n' +
@@ -188,12 +190,36 @@ angular.module('foodAssistant')
             });
         };
 
-        $scope.confirmFriendRequest = function (frEmail) {
-            $http.post(SERVER_URL + '/friend', {useremail: statusService.getEmail(), friendemail: frEmail}).then(function(){
-                $scope.closeNotificationPopup();
-            }, function(e){
-                console.error(e);
-            });
+        $scope.confirmRequest = function () {
+            const statusText = $('#recipe-status');
+            statusText.text('Processing...');
+            statusText.css('color', '#ffe300');
+            if ($scope.currentNotification.category === 'friend request') {
+                $http.post(SERVER_URL + '/friend', {useremail: statusService.getEmail(), friendemail: notification.origin}).then(function(){
+                    $scope.closeNotificationPopup();
+                }).catch(function (e) {
+                    console.error(e);
+                });
+            }
+            else if ($scope.currentNotification.category === 'recipe') {
+                $http.get(SERVER_URL + '/recipe?id=' + $scope.currentNotification.content).then(function (result) {
+                    $http.post(SERVER_URL + '/addNewRecipe', JSON.stringify({email:statusService.getEmail(), recipename:result.data.recipename, category: result.data.category, recipetext: result.data.recipetext, ingredients: result.data.ingredients})).then(function () {
+                        statusText.text('The recipe was successfully added!');
+                        statusText.css('color', '#009900');
+                    }).catch(function (e) {
+                        statusText.text('Error! Try again later!');
+                        statusText.css('color', '#ff1f00');
+                        console.error(e);
+                    })
+                }).catch(function (e) {
+                    statusText.text('Error! Try again later!');
+                    statusText.css('color', '#ff1f00');
+                    console.error(e);
+                })
+            }
+            else {
+                console.error("Unknown notification type.");
+            }
         };
 
         $scope.deleteFriendRequest = function (id) {

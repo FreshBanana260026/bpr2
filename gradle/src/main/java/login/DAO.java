@@ -64,6 +64,16 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 
+    public Recipe getRecipe(String id) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "select * from assistant.recipes where recipeid = \"" + id + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            return new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+        }catch(Exception e){ System.out.println(e); return null;}
+    }
+
     public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients) {
         try{
             Statement stmt = connection.createStatement();
