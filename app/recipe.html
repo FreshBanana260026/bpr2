@@ -8,8 +8,19 @@
                 <p class="recipe-top"><b>Ingredients: </b><b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b> <button id="modifyIngredients" class="add-ingredients" ng-click="modifyIngredientsForm()"></button></p>
                 <div id="recipe-text" contenteditable="false">{{recipe.recipetext}}</div>
                 <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
+                <button id="shareRecipe" class="orange-button" ng-click="shareRecipe()">Share recipe</button>
                 <button id="deleteRecipe" class="orange-button" ng-click="deleteRecipe()">Delete recipe</button>
             </div>
         </div>
+    </div>
+</div>
+<div class="notification-popup" id="share-recipe-popup">
+    <div id="notification-top"><b>Share Recipe</b></div>
+    <div id="notification-middle">
+        Select your friend: <input id="friend-autocomplete" ng-model="shareAddress">
+        <button class="orange-button" ng-click="sendRecipe()">Send</button>
+    </div>
+    <div id="notification-bottom">
+        <button class="orange-button" ng-click="closeShareRecipe()">Close</button>
     </div>
 </div>

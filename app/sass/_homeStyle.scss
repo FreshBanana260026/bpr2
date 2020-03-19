@@ -399,7 +399,7 @@ $main-color-hover: #ff9d00;
   }
 }
 
-#notification-popup {
+.notification-popup {
   height: calc(60% - 40px);
   width: calc(40% - 80px);
   z-index: 2;
@@ -433,5 +433,9 @@ $main-color-hover: #ff9d00;
     background-color: $menu-color;
     justify-content: center;
     align-items: center;
+
+    button {
+      height: 80%;
+    }
   }
 }

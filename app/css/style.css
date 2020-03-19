@@ -589,7 +589,7 @@ button {
   font-weight: bold;
 }
 
-#notification-popup {
+.notification-popup {
   height: calc(60% - 40px);
   width: calc(40% - 80px);
   z-index: 2;
@@ -600,7 +600,7 @@ button {
   left: 30%;
   box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
 }
-#notification-popup #notification-top {
+.notification-popup #notification-top {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -608,19 +608,22 @@ button {
   background-color: #1d1d1d;
   font-weight: bold;
 }
-#notification-popup #notification-middle {
+.notification-popup #notification-middle {
   color: black;
   font-weight: bold;
   padding: 20px;
   height: calc(80% - 40px);
   background-color: #ffffff;
 }
-#notification-popup #notification-bottom {
+.notification-popup #notification-bottom {
   display: flex;
   height: 10%;
   background-color: #1d1d1d;
   justify-content: center;
   align-items: center;
+}
+.notification-popup #notification-bottom button {
+  height: 80%;
 }
 
 #page-body {
@@ -983,6 +986,10 @@ button {
 }
 #friend-form-buttons #friend-form-right-button {
   float: right;
+}
+
+#share-recipe-popup {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

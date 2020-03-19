@@ -10,7 +10,8 @@ angular.module('foodAssistant')
             $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');
         }
 
-        
+
+
         $scope.updateRecipe = function () {
             let button = $('#updateRecipe');
             let text = $('#recipe-text');
@@ -114,5 +115,48 @@ angular.module('foodAssistant')
 
         $scope.removeIng = function (index) {
             $scope.recipe.ingredients.splice(index, 1);
+        };
+        
+        $scope.shareRecipe = function () {
+
+            $http.get(SERVER_URL + `/friends?email=${statusService.getEmail()}`).then(function(response) {
+                const friendsArray = response.data.map(friend => friend.friendEmail);
+                $("#friend-autocomplete").autocomplete({
+                    source: friendsArray
+                });
+            }).catch(function (e) {
+                console.error(e);
+            });
+
+            $('.notification-popup').show();
+
+            /*const htmlString = '\n' +
+                '<div id="notification-popup">\n' +
+                '<div id="notification-top"><b>Share Recipe</b>\n' +
+                '</div>' +
+                '<div id="notification-middle">\n' +
+                'Select your friend: <input id="friend-autocomplete">\n' +
+                '</div>' +
+                '<div id="notification-bottom">\n' +
+                '<button class="orange-button" ng-click="closeNotificationPopup()">Close</button>\n' +
+                '</div>' +
+                '</div>';
+
+            const html = $compile(htmlString)($scope);
+            angular.element(document.body).append(html);*/
+
+            /*$("#friend-autocomplete").autocomplete({
+                source: $scope.friendsArray
+            });*/
+        };
+
+        $scope.sendRecipe = function () {
+            $http.post(SERVER_URL + '/notification', JSON.stringify({category: "recipe", recipient: $scope.shareAddress, origin: statusService.getEmail(), content: $scope.recipe.recipeid})).then(function (result) {
+                console.log(result);
+            });
+        };
+
+        $scope.closeShareRecipe = function () {
+            $('.notification-popup').hide();
         }
     }]);

@@ -159,11 +159,11 @@ angular.module('foodAssistant')
         $scope.notificationClick = function (notification) {
             
             if (document.getElementById('notification-popup')) {
-                $('#notification-popup').remove();
+                $('.notification-popup').remove();
             }
 
             const htmlString = '\n' +
-                '<div id="notification-popup">\n' +
+                '<div class="notification-popup">\n' +
                     '<div id="notification-top"><b>Notification</b>\n' +
                     '</div>' +
                     '<div id="notification-middle">\n' +
@@ -183,8 +183,8 @@ angular.module('foodAssistant')
         };
         
         $scope.closeNotificationPopup = function () {
-            $('#notification-popup').fadeOut(500, function () {
-                $('#notification-popup').remove();
+            $('.notification-popup').fadeOut(500, function () {
+                $('.notification-popup').remove();
             });
         };
 
