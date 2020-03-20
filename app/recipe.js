@@ -53,8 +53,38 @@ angular.module('foodAssistant')
             }
         };
         
-        $scope.addToShoppingList = function (ingredient) {
-            console.log(ingredient);
+        $scope.addToShoppingList = function (ingredient, event) {
+            const htmlString = '\n' +
+                '<div id="quantity-input">\n' +
+                    'Quantity: <input type="text" id="add-item-input" ng-model="itemQuantity" ng-init="0">\n' +
+                    `<button id="addItemButton" class="orange-button" ng-click="addItem('${ingredient}')">` + 'Add</button>\n' +
+                '</div>';
+
+            const html = $compile(htmlString)($scope);
+            angular.element(document.body).append(html);
+
+            $('#quantity-input').css({ top: event.clientY, left: event.clientX });
+            const inputField = $('#add-item-input');
+            inputField.focus();
+            inputField.focusout(function (e) {
+                if (e.relatedTarget === null || e.relatedTarget.id !== 'addItemButton') {
+                    $('#quantity-input').remove();
+                }
+            });
+        };
+
+        $scope.addItem = function (ing) {
+            $http.post(SERVER_URL + '/item', {email: statusService.getEmail(), ingredient: ing, quantity: $scope.itemQuantity})
+                .then(function (result) {
+                    $('#add-item-input').val('');
+                    $scope.itemQuantity = '';
+                    $('#quantity-input').fadeOut(500, function () {
+                        $('#quantity-input').remove();
+                    });
+            }).catch(function (e) {
+                console.error(e);
+            });
+
         };
 
         $scope.deleteRecipe = function () {

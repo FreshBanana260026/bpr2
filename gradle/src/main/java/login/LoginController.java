@@ -94,4 +94,22 @@ public class LoginController {
     public boolean deleteNotification(@RequestParam(value = "id") String id) {
         return d.deleteNotification(id);
     }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/item", method = RequestMethod.POST, consumes = "application/json")
+    public boolean addItem(@RequestBody Item item) {
+        return d.addItem(item.getEmail(), item.getIngredient(), item.getQuantity());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/item", method = RequestMethod.DELETE)
+    public boolean deleteItem(@RequestParam(value = "id") String id) {
+        return d.deleteItem(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/items", method = RequestMethod.GET)
+    public ArrayList<Item> getItems(@RequestParam(value = "email") String email) {
+        return d.getItems(email);
+    }
 }

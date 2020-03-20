@@ -859,6 +859,33 @@ button {
   width: 15px;
 }
 
+#quantity-input {
+  display: flex;
+  height: 20px;
+  width: 200px;
+  padding: 10px;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+  box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
+  background-color: #1d1d1d;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+#quantity-input input {
+  padding: 0;
+  margin: 0 5px;
+  height: 100%;
+  width: 70%;
+  border: 1px solid #ffb700;
+}
+#quantity-input button {
+  height: 100%;
+  width: 25%;
+}
+
 #friends-wrapper {
   display: flex;
   top: 0;
@@ -989,6 +1016,70 @@ button {
 }
 
 #share-recipe-popup {
+  display: none;
+}
+
+#shopping-list-wrapper {
+  display: block;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  color: #ffffff;
+  padding-top: 60px;
+  background-image: url("../pictures/basket.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shopping-list-wrapper #list-top {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+}
+#shopping-list-wrapper #list-rest {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  justify-content: center;
+}
+#shopping-list-wrapper h1 {
+  margin: 0;
+}
+#shopping-list-wrapper ul {
+  position: relative;
+  display: block;
+  list-style: none;
+  color: white;
+  padding: 20px;
+  width: 30%;
+  height: calc(100% - 40px);
+  overflow-y: scroll;
+  margin: 0;
+  background: rgba(29, 29, 29, 0.8);
+}
+#shopping-list-wrapper ul li {
+  display: flex;
+  min-height: 40px;
+  font-size: 20px;
+  align-items: center;
+  margin: auto;
+  padding: 0 10px;
+  cursor: pointer;
+}
+#shopping-list-wrapper ul li button {
+  margin-left: auto;
+}
+#shopping-list-wrapper ul li:not(:last-child) {
+  border-bottom: 1px solid #ffffff;
+}
+#shopping-list-wrapper ul li:hover {
+  color: #ffb700;
+  font-weight: bold;
+}
+#shopping-list-wrapper ul::-webkit-scrollbar {
   display: none;
 }
 

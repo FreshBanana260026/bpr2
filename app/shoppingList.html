@@ -1,0 +1,14 @@
+<div id="wrapper-home">
+    <top-menu></top-menu>
+    <div id="shopping-list-wrapper">
+        <div id="list-top">
+            <h1>Shopping List</h1>
+        </div>
+        <div id="list-rest">
+            <ul>
+                <li ng-repeat="item in shoppingListArray track by $index">{{item.ingredient}}: {{item.quantity}}<button class="orange-button" ng-click="deleteItem($index, item)">Delete</button></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
