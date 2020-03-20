@@ -1,0 +1,7 @@
+CREATE TABLE ShoppingListItems (
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+email VARCHAR(40) NOT NULL,
+ingredient VARCHAR(30) NOT NULL,
+quantity VARCHAR(15),
+FOREIGN KEY (email) REFERENCES UserLogin(email)
+)
