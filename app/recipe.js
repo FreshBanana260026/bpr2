@@ -84,7 +84,6 @@ angular.module('foodAssistant')
             }).catch(function (e) {
                 console.error(e);
             });
-
         };
 
         $scope.deleteRecipe = function () {

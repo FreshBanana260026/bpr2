@@ -1039,11 +1039,43 @@ button {
   justify-content: center;
   align-items: center;
 }
-#shopping-list-wrapper #list-rest {
+#shopping-list-wrapper #list-middle {
   display: flex;
   width: 100%;
   height: 80%;
   justify-content: center;
+}
+#shopping-list-wrapper #list-bottom {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+}
+#shopping-list-wrapper #list-bottom .list-add-section {
+  display: flex;
+  height: calc(100% - 10px);
+  width: calc(30% + 40px);
+  margin: 5px 0;
+  background: rgba(29, 29, 29, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+#shopping-list-wrapper #list-bottom .list-add-section input {
+  box-sizing: border-box;
+  height: 60%;
+  margin: 0 5px;
+  padding: 0;
+  width: 45%;
+  border: 1px solid #ffb700;
+}
+#shopping-list-wrapper #list-bottom .list-add-section #quantity {
+  width: 25%;
+}
+#shopping-list-wrapper #list-bottom .list-add-section button {
+  margin: 0 5px;
+  padding: 0;
+  width: 20%;
+  height: 60%;
 }
 #shopping-list-wrapper h1 {
   margin: 0;

@@ -17,5 +17,17 @@ angular.module('foodAssistant')
             }).catch(function () {
 
             });
-        }
+        };
+
+        $scope.addItemToList = function () {
+            const item = {email: statusService.getEmail(), ingredient: $scope.newItem, quantity: $scope.newQuantity};
+            $http.post(SERVER_URL + '/item', item)
+                .then(function () {
+                    $scope.shoppingListArray.push(item);
+                    $scope.newItem = '';
+                    $scope.newQuantity = '';
+                }).catch(function (e) {
+                console.error(e);
+            });
+        };
     }]);
