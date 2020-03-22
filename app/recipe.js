@@ -180,7 +180,12 @@ angular.module('foodAssistant')
         };
 
         $scope.sendRecipe = function () {
-            $http.post(SERVER_URL + '/notification', JSON.stringify({category: "recipe", recipient: $scope.shareAddress, origin: statusService.getEmail(), content: $scope.recipe.recipeid})).then(function (result) {
+            const status = $('#recipe-share-status');
+            status.show();
+            $http.post(SERVER_URL + '/notification', JSON.stringify({category: "recipe", recipient: $scope.shareAddress, origin: statusService.getEmail(), content: $scope.recipe.recipeid}))
+                .then(function (result) {
+                    status.text('Recipe successfully sent!');
+                    status.css('color', '#009900');
                 console.log(result);
             });
         };

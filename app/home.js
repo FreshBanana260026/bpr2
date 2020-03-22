@@ -7,6 +7,7 @@ angular.module('foodAssistant')
         }
         let dropDown = true;
         let notificationDropDown = true;
+        let noOfNotifications = 0;
         $scope.ingredientsList = [];
         $scope.currentNotification = {};
         $scope.openDropDown = function() {
@@ -21,9 +22,18 @@ angular.module('foodAssistant')
             }
         };
 
-        $interval(function(){
+        $http.get(SERVER_URL + `/notifications?email=${statusService.getEmail()}`).then(function(response) {
+            $scope.notificationsArr = response.data.reverse();
+            noOfNotifications = response.data.length;
+        });
+
+        const notificationInterval = $interval(function(){
             $http.get(SERVER_URL + `/notifications?email=${statusService.getEmail()}`).then(function(response) {
                 $scope.notificationsArr = response.data.reverse();
+                if (noOfNotifications < response.data.length) {
+                    $('#notifications-button').addClass('notification-warning');
+                    noOfNotifications = response.data.length;
+                }
             });
         }, 3000);
 
@@ -152,6 +162,7 @@ angular.module('foodAssistant')
                 notificationDropDown = false;
             } else {
                 $('#notifications-drop-down').hide();
+                $('#notifications-button').removeClass('notification-warning');
                 notificationDropDown = true;
             }
 
@@ -195,9 +206,14 @@ angular.module('foodAssistant')
             statusText.text('Processing...');
             statusText.css('color', '#ffe300');
             if ($scope.currentNotification.category === 'friend request') {
-                $http.post(SERVER_URL + '/friend', {useremail: statusService.getEmail(), friendemail: notification.origin}).then(function(){
+                $http.post(SERVER_URL + '/friend', {useremail: statusService.getEmail(), friendemail: $scope.currentNotification.origin}).then(function(){
+                    statusText.text('Confirmation was successful!');
+                    statusText.css('color', '#009900');
                     $scope.closeNotificationPopup();
+                    $scope.deleteFriendRequest($scope.currentNotification.id);
                 }).catch(function (e) {
+                    statusText.text('Error! Try again later!');
+                    statusText.css('color', '#ff1f00');
                     console.error(e);
                 });
             }
@@ -206,6 +222,8 @@ angular.module('foodAssistant')
                     $http.post(SERVER_URL + '/addNewRecipe', JSON.stringify({email:statusService.getEmail(), recipename:result.data.recipename, category: result.data.category, recipetext: result.data.recipetext, ingredients: result.data.ingredients})).then(function () {
                         statusText.text('Confirmation was successful!');
                         statusText.css('color', '#009900');
+                        $scope.closeNotificationPopup();
+                        $scope.deleteFriendRequest($scope.currentNotification.id);
                     }).catch(function (e) {
                         statusText.text('Error! Try again later!');
                         statusText.css('color', '#ff1f00');
@@ -224,11 +242,16 @@ angular.module('foodAssistant')
 
         $scope.deleteFriendRequest = function (id) {
             $http.delete(SERVER_URL + '/notifications' + '?id= ' + id).then(function(){
+                noOfNotifications--;
                 $scope.closeNotificationPopup();
             }, function(e){
                 console.error(e);
             });
         };
+
+        $scope.$on('$destroy', function closeHome() {
+            $interval.cancel(notificationInterval);
+        })
     }])
     .directive('topMenu', function () {
         return {

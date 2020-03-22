@@ -18,7 +18,8 @@
     <div id="notification-top"><b>Share Recipe</b></div>
     <div id="notification-middle">
         Select your friend: <input id="friend-autocomplete" ng-model="shareAddress">
-        <button class="orange-button" ng-click="sendRecipe()">Send</button>
+        <button class="orange-button" ng-click="sendRecipe()">Send</button><br>
+        <span id="recipe-share-status">Processing...</span>
     </div>
     <div id="notification-bottom">
         <button class="orange-button" ng-click="closeShareRecipe()">Close</button>

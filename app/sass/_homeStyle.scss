@@ -40,11 +40,14 @@ $main-color-hover: #ff9d00;
   }
 
   #search-field {
-    min-height: 26px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    min-height: 30px;
     width: 300px;
     border: 1px solid $main-color;
   }
   #search-button {
+    vertical-align: middle;
     min-height: 30px;
     border: none;
     color: #ffffff;
@@ -71,6 +74,7 @@ $main-color-hover: #ff9d00;
   background-color: $menu-color;
   display: inline-block;
   float: right;
+  cursor: pointer;
 }
 
 #side-menu:hover {
@@ -86,7 +90,11 @@ $main-color-hover: #ff9d00;
   right: 0px;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  cursor: pointer;
+
+  a {
+    padding: 14px 14px;
+    width: 100%;
+  }
 
   a:hover {
     font-weight: normal;
@@ -94,7 +102,8 @@ $main-color-hover: #ff9d00;
 }
 
 .drop-item {
-  padding: 14px 14px;
+  display: flex;
+  padding: 0;
   margin: 0px;
 }
 
@@ -354,6 +363,11 @@ $main-color-hover: #ff9d00;
   margin: 0;
   justify-content: center;
   align-items: center;
+}
+
+.notification-warning {
+  color: $main-color;
+  text-shadow: $main-color 0px 0px 10px;
 }
 
 #notifications-button:hover {
