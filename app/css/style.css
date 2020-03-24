@@ -367,11 +367,25 @@ button {
 .recipe-content table input {
   width: 100%;
 }
+.recipe-content table .time-content {
+  width: 100%;
+}
+.recipe-content table .time-content .time {
+  width: 50%;
+  display: inline-flex;
+  justify-content: center;
+}
+.recipe-content table .time-content .time b {
+  width: 60%;
+}
+.recipe-content table .time-content .time input {
+  width: 40%;
+}
 .recipe-content table td:nth-child(1) {
-  width: 30%;
+  width: 25%;
 }
 .recipe-content table td:nth-child(2) {
-  width: 70%;
+  width: 75%;
 }
 .recipe-content table tr:nth-child(3) td:nth-child(1) {
   vertical-align: top;
@@ -1116,6 +1130,101 @@ button {
 }
 #shopping-list-wrapper ul::-webkit-scrollbar {
   display: none;
+}
+
+#profile-body {
+  display: block;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  color: #1d1d1d;
+  padding-top: 60px;
+  background-color: black;
+  background-image: url("../pictures/anise.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#profile-body .black-background {
+  position: absolute;
+  margin-top: 60px;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+#profile-body input {
+  border: 1px solid #ffb700;
+}
+#profile-body .top {
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+#profile-body .middle {
+  display: flex;
+  height: calc(80% - 40px);
+  padding: 20px;
+  font-weight: bold;
+  justify-content: center;
+}
+#profile-body .middle .content {
+  height: 100%;
+  width: 50%;
+  border-radius: 10px;
+}
+#profile-body .middle table {
+  width: 100%;
+  /*height: calc(100% - 40px);
+  width: calc(70% - 40px);
+  display: inline-block;
+  margin: 20px;*/
+}
+#profile-body .middle table input {
+  width: 100%;
+}
+#profile-body .middle .bg {
+  height: calc(100% - 44px);
+  width: calc(70% - 44px);
+  display: inline-block;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #1d1d1d;
+  border-right: 0px;
+}
+#profile-body .middle .decoration {
+  vertical-align: top;
+  display: inline-block;
+  height: calc(100% - 40px);
+  width: calc(30% - 40px);
+  padding: 20px;
+  background-color: #1d1d1d;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /*border: 2px solid white;
+  border-left: 0;*/
+}
+#profile-body .middle .decoration .t {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #ffb700;
+  height: 80%;
+}
+#profile-body .middle .decoration .t h1 {
+  margin: 0;
+}
+#profile-body .middle .decoration .b {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 /*# sourceMappingURL=style.css.map */

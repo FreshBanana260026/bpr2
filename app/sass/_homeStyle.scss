@@ -172,14 +172,32 @@ $main-color-hover: #ff9d00;
     input {
       width: 100%;
     }
+
+    .time-content {
+      width: 100%;
+
+      .time {
+        width: 50%;
+        display: inline-flex;
+        justify-content: center;
+
+        b {
+          width: 60%;
+        }
+
+        input {
+          width: 40%;
+        }
+      }
+    }
   }
 
   table td:nth-child(1) {
-    width: 30%;
+    width: 25%;
   }
 
   table td:nth-child(2) {
-    width: 70%;
+    width: 75%;
   }
 
   table tr:nth-child(3) td:nth-child(1){

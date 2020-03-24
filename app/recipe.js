@@ -18,6 +18,9 @@ angular.module('foodAssistant')
             let name = $('#recipe-name');
             let category = $('#recipe-category');
             let ingredientButton = $('#modifyIngredients');
+            let preparation = $('#recipe-preparation');
+            let cooking = $('#recipe-cooking');
+
             if(button.html() === 'Update recipe') {
                 text.css("background-color", "white");
                 text.attr('contenteditable','true');
@@ -25,6 +28,10 @@ angular.module('foodAssistant')
                 name.attr('contenteditable','true');
                 category.css("background-color", 'rgba(255,255,255,0.1)');
                 category.attr('contenteditable','true');
+                preparation.css("background-color", 'rgba(255,255,255,0.1)');
+                preparation.attr('contenteditable','true');
+                cooking.css("background-color", 'rgba(255,255,255,0.1)');
+                cooking.attr('contenteditable','true');
                 ingredientButton.show();
                 button.html('Send');
             } else {
@@ -35,7 +42,7 @@ angular.module('foodAssistant')
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    data: JSON.stringify({recipeid: $scope.recipe.recipeid, email:statusService.getEmail(), recipename: name.text(), category: category.text(), recipetext: text.text(), ingredients: $scope.recipe.ingredients.toString()})
+                    data: JSON.stringify({recipeid: $scope.recipe.recipeid, email:statusService.getEmail(), recipename: name.text(), category: category.text(), recipetext: text.text(), ingredients: $scope.recipe.ingredients.toString(), preparation: preparation.text(), cooking: cooking.text()})
                 };
                 $http(request).then(function(){
 
@@ -48,6 +55,10 @@ angular.module('foodAssistant')
                 name.attr('contenteditable','false');
                 category.css("background-color", "transparent");
                 category.attr('contenteditable','false');
+                preparation.css("background-color", "transparent");
+                preparation.attr('contenteditable','false');
+                cooking.css("background-color", "transparent");
+                cooking.attr('contenteditable','false');
                 ingredientButton.hide();
                 button.html('Update recipe');
             }

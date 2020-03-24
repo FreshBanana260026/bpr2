@@ -56,7 +56,7 @@ public class DAO {
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Recipe> resultList = new ArrayList<>();
             while(rs.next())
-                resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8)));
                 //System.out.println(rs.getString(5));
                 //result = rs.getString(1);
             //connection.close();
@@ -70,15 +70,15 @@ public class DAO {
             String sql = "select * from assistant.recipes where recipeid = \"" + id + "\"";
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
-            return new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+            return new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
         }catch(Exception e){ System.out.println(e); return null;}
     }
 
-    public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients) {
+    public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients, int preparation, int cooking) {
         try{
             Statement stmt = connection.createStatement();
-            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients) " +
-                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients +"\")";
+            String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients, preparation, cooking) " +
+                    "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients + "\", \"" + preparation + "\", \"" + cooking + "\")";
             stmt.executeUpdate(sql);
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
@@ -96,10 +96,10 @@ public class DAO {
         }
     }
 
-    public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingredients) {
+    public boolean updateRecipe(String id, String recipeText, String recipename, String category, String ingredients, int preparation, int cooking) {
         try {
             Statement stmt = connection.createStatement();
-            String sql = "UPDATE assistant.recipes SET recipename = \"" + recipename + "\", category = \"" + category + "\", recipetext = \"" + recipeText + "\", ingredients = \"" + ingredients + "\" WHERE recipeid = \"" + id + "\";";
+            String sql = "UPDATE assistant.recipes SET recipename = \"" + recipename + "\", category = \"" + category + "\", recipetext = \"" + recipeText + "\", ingredients = \"" + ingredients + "\", preparation = \"" + preparation + "\", cooking = \"" + cooking + "\" WHERE recipeid = \"" + id + "\";";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {

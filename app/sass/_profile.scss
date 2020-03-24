@@ -1,0 +1,112 @@
+@import "colors";
+
+#profile-body {
+  display: block;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  color: $menu-color;
+  padding-top: 60px;
+  background-color: black;
+  background-image: url('../pictures/anise.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .black-background {
+    position: absolute;
+    margin-top: 60px;
+    top: 0;
+    left: 0;
+    height: calc(100% - 60px);
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  input {
+    border:1px solid $main-color;
+  }
+
+  .top {
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    //text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    color: #ffffff;
+  }
+
+  .middle {
+    display: flex;
+    height: calc(80% - 40px);
+    padding: 20px;
+    font-weight: bold;
+    justify-content: center;
+    //align-items: center;
+
+    .content {
+      height: 100%;
+      width: 50%;
+      //padding: 40px;
+      //background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+      //vertical-align:top;
+      /*height: calc(100% - 40px);
+      width: calc(70% - 40px);
+      display: inline-block;
+      margin: 20px;*/
+    }
+
+    .bg {
+      height: calc(100% - 44px);
+      width: calc(70% - 44px);
+      display: inline-block;
+      padding: 20px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid $menu-color;
+      border-right: 0px;
+    }
+
+    .decoration {
+      vertical-align:top;
+      display: inline-block;
+      height: calc(100% - 40px);
+      width: calc(30% - 40px);
+      padding: 20px;
+      background-color: $menu-color;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      /*border: 2px solid white;
+      border-left: 0;*/
+
+      .t {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        color: $main-color;
+        height: 80%;
+
+        h1 {
+          margin: 0;
+        }
+      }
+
+      .b{
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+    }
+  }
+}

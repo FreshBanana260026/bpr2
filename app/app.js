@@ -32,6 +32,10 @@ angular.module('foodAssistant', ['ngRoute'])
           templateUrl : "shoppingList.html",
           controller : 'ShoppingListCtrl',
       })
+      .when("/profile", {
+          templateUrl : "profile.html",
+          controller : 'ProfileCtrl',
+      })
       .otherwise({
           /*templateUrl : "login.html",
           controller : 'LoginCtrl'*/

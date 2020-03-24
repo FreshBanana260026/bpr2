@@ -62,7 +62,11 @@ angular.module('foodAssistant')
                 '                        <td><button type="text" name="ingredients" ng-model="ingredients" class="add-ingredients" ng-click="ingredientsForm()"></button></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
-                '                        <td><b>Recipe:</b></td>\n' +
+                '                        <td><b>Time:</b></td>\n' +
+                '                        <td><div class="time-content"><div class="time"><b>Preparation: </b><input ng-model="preparation" placeholder="minutes"></div><div class="time"><b>&nbsp;&nbsp;Cooking: </b><input ng-model="cooking" placeholder="minutes"></div></div></td>\n' +
+                '                    </tr>\n' +
+                '                    <tr>\n' +
+                '                        <td valign="top"><b>Recipe:</b></td>\n' +
                 '                        <td><textarea type="text" name="recipetext" ng-model="recipetext" id="recipeText"></textarea></td>\n' +
                 '                    </tr>\n' +
                 '                </table>\n' +
@@ -142,7 +146,7 @@ angular.module('foodAssistant')
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext, ingredients: $scope.ingredients})
+                data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext, ingredients: $scope.ingredients, preparation: $scope.preparation, cooking: $scope.cooking})
             };
 
             $http(req).then(function(res){
@@ -219,7 +223,7 @@ angular.module('foodAssistant')
             }
             else if ($scope.currentNotification.category === 'recipe') {
                 $http.get(SERVER_URL + '/recipe?id=' + $scope.currentNotification.content).then(function (result) {
-                    $http.post(SERVER_URL + '/addNewRecipe', JSON.stringify({email:statusService.getEmail(), recipename:result.data.recipename, category: result.data.category, recipetext: result.data.recipetext, ingredients: result.data.ingredients})).then(function () {
+                    $http.post(SERVER_URL + '/addNewRecipe', JSON.stringify({email:statusService.getEmail(), recipename:result.data.recipename, category: result.data.category, recipetext: result.data.recipetext, ingredients: result.data.ingredients, preparation: result.data.preparation, cooking: result.data.cooking})).then(function () {
                         statusText.text('Confirmation was successful!');
                         statusText.css('color', '#009900');
                         $scope.closeNotificationPopup();
