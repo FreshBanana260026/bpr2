@@ -197,4 +197,26 @@ public class DAO {
             return resultList;
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
+
+    public boolean addRecentRecipe(String email, String recipeId) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "INSERT INTO assistant.recentrecipes (email, recipeid) " +
+                    "VALUES (\"" + email + "\", \"" + recipeId + "\")";
+            stmt.executeUpdate(sql);
+            return true;
+        }catch(Exception e){ e.printStackTrace(); return false;}
+    }
+
+    public ArrayList<RecentRecipe> getRecentRecipes(String email) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "select  * from assistant.recentrecipes where email = \"" + email + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<RecentRecipe> resultList = new ArrayList<>();
+            while(rs.next())
+                resultList.add(new RecentRecipe(rs.getInt(1), rs.getString(2), rs.getString(3)));
+            return resultList;
+        }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
+    }
 }

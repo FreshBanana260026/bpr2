@@ -112,4 +112,16 @@ public class LoginController {
     public ArrayList<Item> getItems(@RequestParam(value = "email") String email) {
         return d.getItems(email);
     }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/recentRecipes", method = RequestMethod.POST, consumes = "application/json")
+    public boolean addItem(@RequestBody RecentRecipe recipe) {
+        return d.addRecentRecipe(recipe.getEmail(), recipe.getRecipeid());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(path = "/recentRecipes", method = RequestMethod.GET)
+    public ArrayList<RecentRecipe> getRecentRecipes(@RequestParam(value = "email") String email) {
+        return d.getRecentRecipes(email);
+    }
 }

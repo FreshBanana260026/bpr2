@@ -1227,4 +1227,101 @@ button {
   align-items: flex-end;
 }
 
+#random-body {
+  display: block;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  color: #1d1d1d;
+  padding-top: 60px;
+  background-color: black;
+  background-image: url("../pictures/citrus.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#random-body .background {
+  display: flex;
+  position: absolute;
+  margin-top: 60px;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  justify-content: center;
+  align-items: center;
+}
+#random-body #random-container {
+  height: 60%;
+  width: 60%;
+  display: inline-flex;
+  background-color: #ffffff;
+  align-items: center;
+}
+#random-body .left {
+  height: 100%;
+  width: 60%;
+  background-color: #ffffff;
+}
+#random-body .splitter {
+  height: 100%;
+  width: 1%;
+}
+#random-body .splitter .rest {
+  display: flex;
+  height: 90%;
+  width: 100%;
+  align-items: center;
+}
+#random-body .splitter .rest .line {
+  height: 85%;
+  width: 100%;
+  background-color: #1d1d1d;
+  box-shadow: 10px 8px 5px 1px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+#random-body .right {
+  height: 100%;
+  width: 39%;
+  background-color: #ffffff;
+}
+#random-body .right .random-result {
+  height: calc(90% - 80px);
+  width: calc(100% - 80px);
+  padding: 40px;
+}
+#random-body .top {
+  display: flex;
+  height: 10%;
+  width: 100%;
+  background-color: #1d1d1d;
+  color: #ffb700;
+  justify-content: center;
+  align-items: center;
+}
+#random-body table {
+  height: 70%;
+  width: 100%;
+  padding: 40px;
+  font-weight: bold;
+  color: #1d1d1d;
+}
+#random-body table input {
+  border: 1px solid #ffb700;
+  width: 100%;
+}
+#random-body .bottom {
+  display: flex;
+  height: 20%;
+  width: calc(100% - 80px);
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 40px;
+}
+#random-body .bottom button {
+  height: 40%;
+}
+
 /*# sourceMappingURL=style.css.map */

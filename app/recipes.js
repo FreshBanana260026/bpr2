@@ -25,6 +25,8 @@ angular.module('foodAssistant')
         $scope.getRecipes = function () {
             $http.get(SERVER_URL + `/getRecipes?email=${statusService.getEmail()}`).then(function(response) {
                 $scope.recipesArray = response.data;
+            }).catch(function (e) {
+                console.error(e);
             });
         };
         $scope.getRecipes();
