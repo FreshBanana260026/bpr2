@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('foodAssistant')
-    .controller('LoginCtrl', ['$scope', '$window', 'statusService', function($scope, $window, statusService) {
+    .controller('LoginCtrl', ['$scope', '$window', 'statusService', '$http', function($scope, $window, statusService, $http) {
         $scope.login2 = async function (uName) {
         const res = await fetch(SERVER_URL + `/login?userName=${uName}`, {mode: 'cors'})
         .catch((error) => {
@@ -40,7 +40,15 @@ angular.module('foodAssistant')
         };
 
         $scope.login = async function () {
-            const res = await fetch(SERVER_URL + '/login', {
+            $http.post(SERVER_URL + '/login', JSON.stringify({email:$scope.emailLogin, password:$scope.passwordLogin}))
+                .then(function (result) {
+                    statusService.setLoggedIn(true);
+                    statusService.setEmail($scope.emailLogin);
+                    $window.location.href = "#!home";
+                }).catch(function (e) {
+                console.error(e);
+            });
+            /*const res = await fetch(SERVER_URL + '/login', {
                 mode: 'cors',
                 method: 'POST',
                 headers: {
@@ -54,7 +62,7 @@ angular.module('foodAssistant')
                 statusService.setLoggedIn(true);
                 statusService.setEmail($scope.emailLogin);
                 $window.location.href = "#!home";
-            }
+            }*/
         };
 
         $scope.confirmMail = function () {

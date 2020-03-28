@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @RestController
 public class LoginController {
 
+    final String URL = "http://localhost:8081";
     DAO d = DAO.getInstance();
 
     /*@CrossOrigin(origins = "http://localhost:8081")
@@ -21,105 +22,105 @@ public class LoginController {
         return new Login(userName, "", "");
     }*/
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/register", method = RequestMethod.POST, consumes = "application/json")
     public boolean register(@RequestBody Login login) {
         return d.connect(login.getEmail(), login.getPassword(), login.getNick());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
     public boolean login(@RequestBody Login login) {
         d.getRecipes(login.getEmail());
         return d.login(login.getEmail(), login.getPassword());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/getRecipes", method = RequestMethod.GET)
     public ArrayList<Recipe> getRecipes(@RequestParam(value = "email") String email) {
         return d.getRecipes(email);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recipe", method = RequestMethod.GET)
     public Recipe getRecipe(@RequestParam(value = "id") String id) {
         return d.getRecipe(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
     public boolean addNewRecipe(@RequestBody Recipe recipe) {
         return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recipe", method = RequestMethod.DELETE)
     public boolean removeOldRecipe(@RequestParam(value="id", defaultValue="") String id){
         return d.removeRecipe(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/updateRecipe", method = RequestMethod.PUT, consumes = "application/json")
     public boolean updateOldRecipe(@RequestBody Recipe recipe){
         return d.updateRecipe(recipe.getRecipeid(),recipe.getRecipetext(), recipe.getRecipename(), recipe.getCategory(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/friend", method = RequestMethod.POST, consumes = "application/json")
     public boolean addFriend(@RequestBody Friend friend) {
         d.addFriend(friend.getFriendEmail(), friend.getUserEmail());
         return d.addFriend(friend.getUserEmail(), friend.getFriendEmail());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/friends", method = RequestMethod.GET)
     public ArrayList<Friend> getFriends(@RequestParam(value = "email") String email) {
         return d.getFriends(email);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/notification", method = RequestMethod.POST, consumes = "application/json")
     public boolean createNotification(@RequestBody Notification notification) {
         return d.createNotification(notification.getCategory(), notification.getRecipient(), notification.getOrigin(), notification.getContent());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/notifications", method = RequestMethod.GET)
     public ArrayList<Notification> getNotifications(@RequestParam(value = "email") String email) {
         return d.getNotifications(email);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/notifications", method = RequestMethod.DELETE)
     public boolean deleteNotification(@RequestParam(value = "id") String id) {
         return d.deleteNotification(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/item", method = RequestMethod.POST, consumes = "application/json")
     public boolean addItem(@RequestBody Item item) {
         return d.addItem(item.getEmail(), item.getIngredient(), item.getQuantity());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/item", method = RequestMethod.DELETE)
     public boolean deleteItem(@RequestParam(value = "id") String id) {
         return d.deleteItem(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/items", method = RequestMethod.GET)
     public ArrayList<Item> getItems(@RequestParam(value = "email") String email) {
         return d.getItems(email);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recentRecipes", method = RequestMethod.POST, consumes = "application/json")
     public boolean addItem(@RequestBody RecentRecipe recipe) {
         return d.addRecentRecipe(recipe.getEmail(), recipe.getRecipeid());
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recentRecipes", method = RequestMethod.GET)
     public ArrayList<RecentRecipe> getRecentRecipes(@RequestParam(value = "email") String email) {
         return d.getRecentRecipes(email);
