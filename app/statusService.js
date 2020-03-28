@@ -1,7 +1,8 @@
 angular.module('foodAssistant')
-    .service('statusService', function () {
+    .service('statusService', ['$http', function ($http) {
         let loggedIn = true;
         let email = '';
+        let nick = '';
         let recipe = {};
 
         return {
@@ -22,6 +23,16 @@ angular.module('foodAssistant')
             },
             setRecipe: function(value) {
                 recipe = value;
+            },
+            getNick: function () {
+                return nick;
+            },
+            setNick: function() {
+                $http.get('http://localhost:8080/nick?email=mail@test.com').then(function (result) {
+                    nick = result.data.nick;
+                }).catch(function (e) {
+                    console.error(e)
+                });
             }
         };
-    });
+    }]);

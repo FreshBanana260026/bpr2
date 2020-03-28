@@ -49,6 +49,16 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return false;}
     }
 
+    public String getNick(String email) {
+        try{
+            Statement stmt = connection.createStatement();
+            String sql = "select nickname from assistant.userlogin where email = \"" + email + "\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            return rs.getString(1);
+        }catch(Exception e){ System.out.println(e); return null;}
+    }
+
     public ArrayList<Recipe> getRecipes(String emailValue) {
         try{
             Statement stmt = connection.createStatement();
@@ -220,10 +230,10 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
 
-    public boolean updatePassword(String email, String password) {
+    public boolean updateProfile(String email, String password, String nick) {
         try {
             Statement stmt = connection.createStatement();
-            String sql = "UPDATE assistant.userlogin SET userpassword = \"" + password + "\" WHERE email = \"" + email + "\";";
+            String sql = "UPDATE assistant.userlogin SET userpassword = \"" + password +  "\", nickname = \"" + nick + "\" WHERE email = \"" + email + "\";";
             stmt.executeUpdate(sql);
             return true;
         } catch (Exception e) {

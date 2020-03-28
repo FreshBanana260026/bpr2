@@ -36,6 +36,18 @@ public class LoginController {
     }
 
     @CrossOrigin(origins = URL)
+    @RequestMapping(path = "/nick", method = RequestMethod.GET)
+    public Login getNick(@RequestParam(value = "email") String email) {
+        return new Login("", "", d.getNick(email));
+    }
+
+    @CrossOrigin(origins = URL)
+    @RequestMapping(path = "/profile", method = RequestMethod.PUT, consumes = "application/json")
+    public boolean updatePassword(@RequestBody Login data){
+        return d.updateProfile(data.getEmail(), data.getPassword(), data.getNick());
+    }
+
+    @CrossOrigin(origins = URL)
     @RequestMapping(path = "/getRecipes", method = RequestMethod.GET)
     public ArrayList<Recipe> getRecipes(@RequestParam(value = "email") String email) {
         return d.getRecipes(email);
@@ -124,11 +136,5 @@ public class LoginController {
     @RequestMapping(path = "/recentRecipes", method = RequestMethod.GET)
     public ArrayList<RecentRecipe> getRecentRecipes(@RequestParam(value = "email") String email) {
         return d.getRecentRecipes(email);
-    }
-
-    @CrossOrigin(origins = URL)
-    @RequestMapping(path = "/password", method = RequestMethod.PUT, consumes = "application/json")
-    public boolean updatePassword(@RequestBody Login data){
-        return d.updatePassword(data.getEmail(), data.getPassword());
     }
 }
