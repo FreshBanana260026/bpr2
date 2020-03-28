@@ -42,9 +42,11 @@ angular.module('foodAssistant')
         $scope.login = async function () {
             $http.post(SERVER_URL + '/login', JSON.stringify({email:$scope.emailLogin, password:$scope.passwordLogin}))
                 .then(function (result) {
-                    statusService.setLoggedIn(true);
-                    statusService.setEmail($scope.emailLogin);
-                    $window.location.href = "#!home";
+                    if (result.data) {
+                        statusService.setLoggedIn(true);
+                        statusService.setEmail($scope.emailLogin);
+                        $window.location.href = "#!home";
+                    }
                 }).catch(function (e) {
                 console.error(e);
             });

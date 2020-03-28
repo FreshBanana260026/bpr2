@@ -6,4 +6,13 @@ angular.module('foodAssistant')
             $window.location.href = "#!/";
         }
         $scope.profileEmail = statusService.getEmail();
+
+        $scope.updatePassword = function () {
+            $http.put(SERVER_URL + '/password', {email: statusService.getEmail(), password: $scope.newPassword, nick: ''})
+                .then(function () {
+                    
+                }).catch(function (e) {
+                console.error(e);
+            });
+        }
     }]);

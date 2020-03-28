@@ -125,4 +125,10 @@ public class LoginController {
     public ArrayList<RecentRecipe> getRecentRecipes(@RequestParam(value = "email") String email) {
         return d.getRecentRecipes(email);
     }
+
+    @CrossOrigin(origins = URL)
+    @RequestMapping(path = "/password", method = RequestMethod.PUT, consumes = "application/json")
+    public boolean updatePassword(@RequestBody Login data){
+        return d.updatePassword(data.getEmail(), data.getPassword());
+    }
 }

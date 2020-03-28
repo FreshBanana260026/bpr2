@@ -219,4 +219,16 @@ public class DAO {
             return resultList;
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
+
+    public boolean updatePassword(String email, String password) {
+        try {
+            Statement stmt = connection.createStatement();
+            String sql = "UPDATE assistant.userlogin SET userpassword = \"" + password + "\" WHERE email = \"" + email + "\";";
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 }
