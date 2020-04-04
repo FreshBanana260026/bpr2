@@ -1,12 +1,12 @@
 package login;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+
+import static login.ImageManager.*;
 
 @RestController
 public class LoginController {
@@ -61,13 +61,15 @@ public class LoginController {
 
     @CrossOrigin(origins = URL)
     @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
-    public boolean addNewRecipe(@RequestBody Recipe recipe) {
-        return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
+    public String addNewRecipe(@RequestBody Recipe recipe) {
+        String res = d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
+        return res;
     }
 
     @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recipe", method = RequestMethod.DELETE)
-    public boolean removeOldRecipe(@RequestParam(value="id", defaultValue="") String id){
+    public boolean removeOldRecipe(@RequestParam(value="id", defaultValue="") String id, @RequestParam(value = "email") String email){
+        ImageManager.removeImage(email, id);
         return d.removeRecipe(id);
     }
 
@@ -136,5 +138,17 @@ public class LoginController {
     @RequestMapping(path = "/recentRecipes", method = RequestMethod.GET)
     public ArrayList<RecentRecipe> getRecentRecipes(@RequestParam(value = "email") String email) {
         return d.getRecentRecipes(email);
+    }
+
+    @CrossOrigin(origins = URL)
+    @RequestMapping(path = "/image", method = RequestMethod.POST, consumes = "multipart/form-data")
+    public boolean saveImage(@RequestParam("file") MultipartFile file, @RequestParam(value = "email") String email) {
+        return save(file, "C:\\assistant\\pictures\\" + email);
+    }
+
+    @CrossOrigin(origins = URL)
+    @RequestMapping(path = "/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public Resource getImage(@RequestParam(value = "email") String email, @RequestParam(value = "id") String id) {
+        return  new ImageManager().getImage("file:C:\\assistant\\pictures\\" + email + "\\" + id);
     }
 }

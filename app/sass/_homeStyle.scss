@@ -160,12 +160,21 @@ $main-color-hover: #ff9d00;
   position: relative;
   background-color: #ffffff;
   margin: 10% auto;
+  height: 60%;
   width: 40%;
   color: $menu-color;
   animation-name: reg-animation;
   animation-duration: 0.4s;
 
+  #reg-top {
+    height: 10%;
+  }
+  form {
+    height: calc(90% - 50px);
+  }
+
   table {
+    height: 100%;
     width: 100%;
     padding: 20px;
 
@@ -204,11 +213,26 @@ $main-color-hover: #ff9d00;
     vertical-align: top;
   }
 
+  table td:nth-child(2){
+    height: 6%;
+  }
+
+  table tr:nth-child(6) td:nth-child(2){
+    height: 70%;
+  }
+
   #recipeText {
-    height: 200px;
+    height: 100%;
+    padding: 0;
     overflow: auto;
     width: 100%;
     resize: none;
+  }
+
+  .bottom-form {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
   }
 }
 

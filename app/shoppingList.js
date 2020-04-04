@@ -6,7 +6,6 @@ angular.module('foodAssistant')
         $http.get(SERVER_URL + '/items' + '?email=' + statusService.getEmail())
             .then(function (result) {
                 $scope.shoppingListArray = result.data;
-                console.log($scope.shoppingListArray)
         }).catch(function (e) {
             console.error(e);
         });

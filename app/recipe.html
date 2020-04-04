@@ -8,7 +8,7 @@
                 <p class="recipe-top"><b>Ingredients: </b><b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient, $event)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b> <button id="modifyIngredients" class="add-ingredients" ng-click="modifyIngredientsForm()"></button></p>
                 <p class="recipe-top"><b>Preparation time: </b><b id="recipe-preparation" class="white">{{recipe.preparation}}</b></p>
                 <p class="recipe-top"><b>Cooking time: </b><b id="recipe-cooking" class="white">{{recipe.cooking}}</b></p>
-                <div id="recipe-text" contenteditable="false">{{recipe.recipetext}}</div>
+                <div id="recipe-text" contenteditable="false"><p><img id="recipe-image">{{recipe.recipetext}}</p></div>
                 <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
                 <button id="shareRecipe" class="orange-button" ng-click="shareRecipe()">Share recipe</button>
                 <button id="deleteRecipe" class="orange-button" ng-click="deleteRecipe()">Delete recipe</button>

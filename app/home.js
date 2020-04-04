@@ -66,6 +66,10 @@ angular.module('foodAssistant')
                 '                        <td><div class="time-content"><div class="time"><b>Preparation: </b><input ng-model="preparation" placeholder="minutes"></div><div class="time"><b>&nbsp;&nbsp;Cooking: </b><input ng-model="cooking" placeholder="minutes"></div></div></td>\n' +
                 '                    </tr>\n' +
                 '                    <tr>\n' +
+            '                           <td><b><label for="recipeImage">Image:</label></b></td>\n' +
+            '                           <td><input type="file" id="recipeImage" name="recipeImage"></td>\n' +
+            '                        </tr>\n' +
+                '                    <tr>\n' +
                 '                        <td valign="top"><b>Recipe:</b></td>\n' +
                 '                        <td><textarea type="text" name="recipetext" ng-model="recipetext" id="recipeText"></textarea></td>\n' +
                 '                    </tr>\n' +
@@ -149,15 +153,26 @@ angular.module('foodAssistant')
                 data: JSON.stringify({email:statusService.getEmail(), recipename:$scope.recipename, category: $scope.category, recipetext: $scope.recipetext, ingredients: $scope.ingredients, preparation: $scope.preparation, cooking: $scope.cooking})
             };
 
-            $http(req).then(function(res){
+            $http(req).then(function(response){
                 if (typeof $scope.getRecipes === "function") {
                     $scope.getRecipes();
                 }
-            }, function(e){
-                console.log(e);
-            });
 
-            $('#recipe-modal').remove();
+                const i = $('#recipeImage').prop('files')[0];
+                let image = new FormData();
+                image.append('file', i, response.data + '.jpg');
+
+                $http.post(SERVER_URL + '/image?email=' + statusService.getEmail(), image, {
+                    headers: {'Content-Type': undefined}
+                }).then(function () {
+                    //$('#recipeImage')
+                    $('#recipe-modal').remove();
+                }).catch(function (e) {
+                    console.log(e);
+                });
+            }).catch(function (e) {
+                console.error(e);
+            });
         };
 
         $scope.notificationMenu = function() {
