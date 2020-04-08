@@ -1,4 +1,4 @@
-package login;
+package server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -1,4 +1,4 @@
-package login;
+package server;
 
 public class Recipe {
 
