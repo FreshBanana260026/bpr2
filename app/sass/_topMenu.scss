@@ -42,12 +42,14 @@ $main-color-hover: #ff9d00;
   #search-field {
     vertical-align: middle;
     box-sizing: border-box;
+    margin-top: 15px;
     min-height: 30px;
     width: 300px;
     border: 1px solid $main-color;
   }
   #search-button {
     vertical-align: middle;
+    margin-top: 15px;
     min-height: 30px;
     border: none;
     color: #ffffff;
@@ -146,7 +148,7 @@ $main-color-hover: #ff9d00;
 }
 
 #recipe-modal {
-  display: block;
+  display: flex;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -154,12 +156,14 @@ $main-color-hover: #ff9d00;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
 }
 
 .recipe-content {
   position: relative;
   background-color: #ffffff;
-  margin: 10% auto;
+  //margin: 10% auto;
   height: 60%;
   width: 40%;
   color: $menu-color;
@@ -282,8 +286,6 @@ $main-color-hover: #ff9d00;
   position: absolute;
   margin: 0 auto;
   width: 40%;
-  top: 10%;
-  left: 30%;
 }
 
 #ingredients-top {
@@ -398,7 +400,7 @@ $main-color-hover: #ff9d00;
 
 #notifications-button {
   display: flex;
-  width: 90px;
+  width: 100px;
   height: 60px;
   float: right;
   cursor: pointer;
@@ -493,5 +495,84 @@ $main-color-hover: #ff9d00;
     button {
       height: 80%;
     }
+  }
+}
+
+.small-screen {
+  display: none;
+}
+
+.small-icon {
+  vertical-align: middle;
+  height: 32px;
+  display: none;
+  width: 32px;
+  margin-top: 14px;
+  margin-left: 14px;
+}
+
+@media only screen and (max-width: 1000px) {
+  #top-menu {
+
+    #inline-menu {
+      display: none;
+    }
+
+    #search-field {
+      margin-left: 15px;
+      min-height: 30px;
+      width: 26%;
+    }
+    #search-button {
+      margin-right: 15px;
+    }
+
+    .small-icon {
+      display: inline-block;
+    }
+  }
+
+  .recipe-content {
+    width: 80%;
+  }
+
+  #ingredients-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .large-screen {
+    display: none;
+  }
+
+  .small-screen {
+    display: block;
+  }
+
+  #notifications-button {
+    width: 40px;
+    height: 60px;
+    font-size: 20px;
+    //background-image: url('../pictures/plushover.png');
+  }
+
+  #top-menu {
+    #search-field {
+      width: calc(100% - 250px);
+    }
+
+    .small-icon {
+      display: none;
+    }
+  }
+
+  .recipe-content {
+    min-height: 380px;
+    width: 100%;
+  }
+
+  #ingredients-form {
+    width: 100%;
   }
 }

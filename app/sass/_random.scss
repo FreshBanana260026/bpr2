@@ -109,3 +109,25 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  #random-body {
+    #random-container {
+      height: 60%;
+      width: 100%;
+    }
+
+    table {
+      padding: 40px 10px;
+    }
+
+    .right {
+
+      .random-result {
+        height: calc(90% - 80px);
+        width: calc(100% - 20px);
+        padding: 40px 10px;
+      }
+    }
+  }
+}

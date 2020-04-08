@@ -109,7 +109,7 @@ angular.module('foodAssistant')
                 '</div>';
 
             const html = $compile(htmlString)($scope);
-            angular.element(document.body).append(html);
+            angular.element(document.getElementById("recipe-modal")).append(html);
         };
         
         $scope.closeRecipeForm = function () {

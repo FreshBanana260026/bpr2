@@ -41,31 +41,13 @@
   }
 }
 
-/*#friends-list::-webkit-scrollbar {
-  width: 10px;
-}*/
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #878787;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $main-color;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: $main-color-hover;
-}
-
 #friends-search {
-  display: inline-block;
+  display: flex;
   width: 80%;
   height: 100%;
   vertical-align:top;
+  justify-content: center;
+  align-items: center;
 }
 
 #add-friend-form {
@@ -86,14 +68,11 @@
 }
 
 #friend-form {
-  height: calc(30% - 40px);
-  width: calc(40% - 80px);
+  height: 30%;
+  width: 50%;
   z-index: 2;
-  position: absolute;
   margin: 0 auto;
   padding: 0;
-  top: 35%;
-  left: 30%;
   box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
 }
 
@@ -111,6 +90,10 @@
   font-weight: bold;
   padding: 20px;
   height: calc(80% - 40px);
+
+  input {
+    width: 40%;
+  }
 }
 
 #friend-form-bottom {
@@ -119,12 +102,10 @@
 }
 
 #friend-form-buttons {
-  height: 10%;
+  height: 30%;
   width: calc(100% - 40px);
   bottom: 10%;
-  position: absolute;
-  left: 0;
-  padding: 20px;
+  padding: 10px;
 
   #friend-form-left-button {
     float: left;
@@ -137,4 +118,24 @@
 
 #share-recipe-popup {
   display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  #friend-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #friend-form {
+    width: 95%;
+  }
+
+
+  #friend-form-middle {
+
+    input {
+      width: 80%;
+    }
+  }
 }

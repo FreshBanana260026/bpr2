@@ -1,11 +1,13 @@
 <div id="top-menu">
+    <img class="small-icon" src="favicon.ico">
         <ul id="inline-menu">
             <li><a href="" class="non-click"><img src="favicon.ico"></a></li>
             <li><a href="#!home">Home</a></li>
             <li><a href="#!recipes">Recipes</a></li>
             <li><a href="#!random">Random Recipe</a></li>
-            <li><a class="non-click"><input id="search-field" placeholder=" Enter a recipe name"><button id="search-button"><b>Search</b></button></a></li>
+            <!--<li><a class="non-click"><input id="search-field" placeholder=" Enter a recipe name"><button id="search-button"><b>Search</b></button></a></li>-->
         </ul>
+    <input id="search-field" placeholder=" Search recipe"><button id="search-button"><b>Search</b></button>
         <div id="side-menu" ng-click="openDropDown()">
             <div id="drop-button"></div>
             <div class="drop-down">
@@ -19,7 +21,7 @@
         </div>
         <button id="add-rec-button" ng-click="recipeForm()"></button>
         <div id="notifications-wrapper">
-            <div id="notifications-button" ng-click="notificationMenu()"><b>Notifications</b></div>
+            <div id="notifications-button" ng-click="notificationMenu()"><b class="large-screen">Notifications</b><b class="small-screen">N</b></div>
             <ul id="notifications-drop-down">
                 <li ng-repeat="notification in notificationsArr" ng-click="notificationClick(notification)">{{notification.category}}</li>
             </ul>

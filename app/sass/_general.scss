@@ -51,3 +51,19 @@ button {
 .white {
   color: #ffffff;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 183, 0, 0.31);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $main-color-hover;
+}

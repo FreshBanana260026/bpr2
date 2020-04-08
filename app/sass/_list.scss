@@ -109,3 +109,19 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  #shopping-list-wrapper {
+
+    ul {
+      width: calc(90% - 40px);
+    }
+
+    #list-bottom {
+
+      .list-add-section {
+        width: 90%;
+      }
+    }
+  }
+}

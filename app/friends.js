@@ -33,7 +33,7 @@ angular.module('foodAssistant')
                     '</div>\n' +
                 '</div>';
             const html = $compile(htmlString)($scope);
-            angular.element(document.body).append(html);
+            angular.element(document.getElementById('friends-search')).append(html);
         };
 
         $scope.closeFriendForm = function () {

@@ -109,3 +109,23 @@
   display: none;
   color: #ffe300;
 }
+
+@media only screen and (max-width: 600px) {
+  #recipe-wrap {
+    width: calc(100% - 40px);
+    min-height: calc(100% - 70px);
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 25px;
+    padding: 20px 10px;
+
+    #recipe-text {
+      img {
+        width: calc(100% - 6px);
+        margin-left: 0;
+        box-shadow: none;
+      }
+    }
+
+  }
+}
