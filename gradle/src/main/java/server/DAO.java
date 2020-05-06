@@ -11,7 +11,7 @@ public class DAO {
     private DAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistant","root","Pass123");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
