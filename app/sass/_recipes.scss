@@ -198,3 +198,46 @@
     border-bottom-right-radius: 25px;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+
+  #search-result {
+    width: 50%;
+    left: 25%;
+    top: 15%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #recipe-content {
+    display: flex;
+    width: calc(100% - 20px);
+    margin: 0;
+    padding: 50px 10px;
+  }
+
+  #recipe-filters {
+
+    input {
+      width: 100%;
+    }
+  }
+
+  #search-result {
+    background-color: $menu-color;
+    height: 80%;
+    width: 80%;
+    z-index: 2;
+    position: absolute;
+    left: 10%;
+    top: 15%;
+  }
+
+  #recipe-list {
+    width: 100%;
+  }
+
+  #recipe-filters {
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
-package login;
+package server;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class DAO {
             /*while(rs.next())
                 System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
             con.close();*/
+            new File("C:\\assistant\\pictures\\" + emailValue).mkdirs();
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
     }
@@ -84,14 +86,19 @@ public class DAO {
         }catch(Exception e){ System.out.println(e); return null;}
     }
 
-    public boolean addRecipe(String emailValue, String name, String category, String text, String ingredients, int preparation, int cooking) {
+    public String addRecipe(String emailValue, String name, String category, String text, String ingredients, int preparation, int cooking) {
         try{
             Statement stmt = connection.createStatement();
             String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients, preparation, cooking) " +
                     "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients + "\", \"" + preparation + "\", \"" + cooking + "\")";
             stmt.executeUpdate(sql);
-            return true;
-        }catch(Exception e){ System.out.println(e); return false;}
+
+            Statement stmt2 = connection.createStatement();
+            String sql2 = "SELECT LAST_INSERT_ID();";
+            ResultSet rs2 = stmt2.executeQuery(sql2);
+            rs2.next();
+            return rs2.getString(1);
+        }catch(Exception e){ System.out.println(e); return "";}
     }
 
     public boolean removeRecipe(String id) {

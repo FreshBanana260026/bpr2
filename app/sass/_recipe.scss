@@ -50,10 +50,23 @@
   }
 
   #recipe-text {
+    display: block;
     color: $menu-color;
     font-weight: bold;
     white-space: pre-wrap;
     font-family: "Arial", Times, serif;
+    overflow: auto;
+
+    img {
+      float: right;
+      width: 400px;
+      height: 250px;
+      margin-left: 16px;
+      margin-bottom: 16px;
+      border: 3px solid $menu-color;
+      box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.4), -6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
   }
 
   #modifyIngredients {
@@ -95,4 +108,24 @@
 #recipe-share-status {
   display: none;
   color: #ffe300;
+}
+
+@media only screen and (max-width: 600px) {
+  #recipe-wrap {
+    width: calc(100% - 40px);
+    min-height: calc(100% - 70px);
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 25px;
+    padding: 20px 10px;
+
+    #recipe-text {
+      img {
+        width: calc(100% - 6px);
+        margin-left: 0;
+        box-shadow: none;
+      }
+    }
+
+  }
 }

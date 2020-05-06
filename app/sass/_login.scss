@@ -163,3 +163,10 @@
 .red {
   background-color: #ff4d4d;
 }
+
+@media only screen and (max-width: 600px) {
+  .registration-content {
+    margin: 20% auto;
+    width: 80%;
+  }
+}

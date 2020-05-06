@@ -33,7 +33,7 @@ angular.module('foodAssistant')
                     '</div>\n' +
                 '</div>';
             const html = $compile(htmlString)($scope);
-            angular.element(document.body).append(html);
+            angular.element(document.getElementById('friends-search')).append(html);
         };
 
         $scope.closeFriendForm = function () {
@@ -45,7 +45,6 @@ angular.module('foodAssistant')
         $scope.sendFriendRequest = function () {
             $http.post(SERVER_URL + '/notification', JSON.stringify({category: "friend request", recipient: $scope.recipientData, origin: statusService.getEmail(), content: "You have a new friend request!"})).then(function (result) {
                 $scope.closeFriendForm();
-                console.log(result);
             });
         }
     }]);

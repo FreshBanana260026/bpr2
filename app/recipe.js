@@ -10,7 +10,14 @@ angular.module('foodAssistant')
             $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');
         }
 
-
+        fetch(SERVER_URL + '/image?email=' + statusService.getEmail() + '&id=' + $scope.recipe.recipeid + '.jpg').then(function (response) {
+            return response.blob();
+        }).then(function (imageBlob) {
+            const image = URL.createObjectURL(imageBlob);
+            $('#recipe-image').attr('src',  image);
+        }).catch(function (e) {
+            console.error(e);
+        });
 
         $scope.updateRecipe = function () {
             let button = $('#updateRecipe');
@@ -107,7 +114,7 @@ angular.module('foodAssistant')
                 },
                 data: JSON.stringify($scope.recipe.recipeid)
             };*/
-            $http.delete(SERVER_URL + '/recipe' + '?id= ' + $scope.recipe.recipeid).then(function(){
+            $http.delete(SERVER_URL + '/recipe' + '?id=' + $scope.recipe.recipeid + '&email=' + statusService.getEmail()).then(function(){
                 $window.location.href = "#!recipes";
             }, function(e){
                 console.error(e);
@@ -197,7 +204,6 @@ angular.module('foodAssistant')
                 .then(function (result) {
                     status.text('Recipe successfully sent!');
                     status.css('color', '#009900');
-                console.log(result);
             });
         };
 

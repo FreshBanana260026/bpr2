@@ -37,13 +37,25 @@ angular.module('foodAssistant')
             }).filter(recipe => {
                 return !rejectedRecipesArr.includes(recipe.recipeid);
             });
-            let resultArray = $scope.recipesArray.filter(recipe => {
-                return recipe.category === $scope.randomCategory;
-            }).filter(recipe => {
-                return recipe.ingredients.includes($scope.randomIngredient);
-            }).filter(recipe => {
-                return ((recipe.preparation + recipe.cooking) <= $scope.randomDifficulty);
-            });
+            let resultArray = $scope.recipesArray;
+            if ($scope.randomCategory !== '') {
+                resultArray = resultArray.filter(recipe => {
+                    return recipe.category === $scope.randomCategory;
+                })
+            }
+            if ($scope.randomIngredient !== '') {
+                resultArray.filter(recipe => {
+                    return recipe.ingredients.includes($scope.randomIngredient);
+                })
+            }
+            if ($scope.randomDifficulty !== '') {
+                resultArray = resultArray.filter(recipe => {
+                    recipe.ingredients.includes(((recipe.preparation + recipe.cooking) <= $scope.randomDifficulty))
+                    return ((recipe.preparation + recipe.cooking) <= $scope.randomDifficulty);
+                });
+            }
+
+            console.log(resultArray)
             $scope.result = resultArray[Math.floor(Math.random() * resultArray.length)];
             if (resultArray.length !== 0)  {
                 rejectedRecipesArr.push($scope.result.recipeid);
