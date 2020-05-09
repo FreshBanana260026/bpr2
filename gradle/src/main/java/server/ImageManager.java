@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 
 
-public class ImageManager {
+public class ImageManager implements IImageManager{
 
     @Autowired
     ResourceLoader resourceLoader;
@@ -28,7 +28,7 @@ public class ImageManager {
 
     }
 
-    public static boolean save(MultipartFile file, String path) {
+    public boolean save(MultipartFile file, String path) {
         Path filepath = Paths.get(path, file.getOriginalFilename());
         try (OutputStream os = Files.newOutputStream(filepath)) {
             os.write(file.getBytes());
@@ -83,7 +83,7 @@ public class ImageManager {
         oldImg.delete();
     }
 
-    public static void removeImage(String email, String id) {
+    public void removeImage(String email, String id) {
         File image = new File("C:\\assistant\\pictures\\" + email + "\\" + id + ".jpg");
         if (image.exists()) {
             image.delete();

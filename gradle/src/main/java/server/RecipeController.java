@@ -33,7 +33,8 @@ public class RecipeController {
     @CrossOrigin(origins = URL)
     @RequestMapping(path = "/recipe", method = RequestMethod.DELETE)
     public boolean removeOldRecipe(@RequestParam(value="id", defaultValue="") String id, @RequestParam(value = "email") String email){
-        ImageManager.removeImage(email, id);
+        IImageManager manager = new ImageManager();
+        manager.removeImage(email, id);
         return d.removeRecipe(id);
     }
 
