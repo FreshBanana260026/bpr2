@@ -1,4 +1,6 @@
 package server;
+import objects.RecentRecipe;
+import objects.Recipe;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

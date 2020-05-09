@@ -1,4 +1,4 @@
-package server;
+package objects;
 
 public class Friend {
     private final String useremail;

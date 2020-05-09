@@ -1,4 +1,6 @@
 package server;
+import objects.*;
+
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;

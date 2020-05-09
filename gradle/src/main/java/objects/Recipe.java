@@ -1,4 +1,4 @@
-package server;
+package objects;
 
 public class Recipe {
 
