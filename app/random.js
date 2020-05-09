@@ -55,7 +55,6 @@ angular.module('foodAssistant')
                 });
             }
 
-            console.log(resultArray)
             $scope.result = resultArray[Math.floor(Math.random() * resultArray.length)];
             if (resultArray.length !== 0)  {
                 rejectedRecipesArr.push($scope.result.recipeid);
