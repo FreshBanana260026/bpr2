@@ -5,20 +5,21 @@ angular.module('foodAssistant')
         if(!statusService.getLoggedIn()) {
             $window.location.href = "#!/";
         }
-        let dropDown = true;
+        const ctrl = this;
+        ctrl.dropDown = true;
         let notificationDropDown = true;
         let noOfNotifications = 0;
         $scope.ingredientsList = [];
         $scope.currentNotification = {};
         $scope.openDropDown = function() {
-            if (dropDown) {
+            if (ctrl.dropDown) {
                 $('.drop-down').fadeIn();
                 $('#side-menu').css('background-color', '#FFB700');
-                dropDown = false;
+                ctrl.dropDown = false;
             } else {
                 $('.drop-down').fadeOut();
                 $('#side-menu').css('background-color', 'transparent');
-                dropDown = true;
+                ctrl.dropDown = true;
             }
         };
 

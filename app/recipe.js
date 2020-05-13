@@ -2,9 +2,6 @@
 
 angular.module('foodAssistant')
     .controller('RecipeCtrl', ['$scope', '$window', '$compile', 'statusService', '$http', function($scope, $window, $compile, statusService, $http) {
-        if(!statusService.getLoggedIn()) {
-            $window.location.href = "#!/";
-        }
         $scope.recipe = statusService.getRecipe();
         if($scope.recipe.ingredients) {
             $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');

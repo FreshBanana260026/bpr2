@@ -2,10 +2,6 @@
 
 angular.module('foodAssistant')
     .controller('HomeCtrl', ['$scope', '$window', '$compile', 'statusService', '$http', function($scope, $window, $compile, statusService, $http) {
-        if (!statusService.getLoggedIn()) {
-            $window.location.href = "#!/";
-        }
-
         let currentSlide = 0;
         let oldSlide = 0;
         const slides = $('.slide');

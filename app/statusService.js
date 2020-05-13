@@ -1,6 +1,6 @@
 angular.module('foodAssistant')
     .service('statusService', ['$http', function ($http) {
-        let loggedIn = true;
+        let loggedIn = false;
         let email = '';
         let nick = '';
         let recipe = {};
@@ -36,3 +36,5 @@ angular.module('foodAssistant')
             }
         };
     }]);
+
+

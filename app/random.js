@@ -2,11 +2,6 @@
 
 angular.module('foodAssistant')
     .controller('RandomCtrl', ['$scope', '$window', '$http', 'statusService', function($scope, $window, $http, statusService) {
-
-        if(!statusService.getLoggedIn()) {
-            $window.location.href = "#!/";
-        }
-
         $scope.randomCategory = '';
         $scope.randomIngredient = '';
         $scope.randomDifficulty = '';

@@ -2,10 +2,6 @@
 
 angular.module('foodAssistant')
     .controller('FriendsCtrl', ['$scope', '$window', '$compile', 'statusService', '$http', function($scope, $window, $compile, statusService, $http) {
-        if (!statusService.getLoggedIn()) {
-            $window.location.href = "#!/";
-        }
-
         $scope.getFriends = function () {
             $http.get(SERVER_URL + `/friends?email=${statusService.getEmail()}`).then(function(response) {
                 $scope.friendsArray = response.data;

@@ -26,8 +26,8 @@ public class RecipeController {
     @CrossOrigin(origins = URL)
     @RequestMapping(path = "/addNewRecipe", method = RequestMethod.POST, consumes = "application/json")
     public String addNewRecipe(@RequestBody Recipe recipe) {
-        String res = d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(), recipe.getRecipetext(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
-        return res;
+        return d.addRecipe(recipe.getEmail(), recipe.getRecipename(), recipe.getCategory(),
+                recipe.getRecipetext(), recipe.getIngredients(), recipe.getPreparation(), recipe.getCooking());
     }
 
     @CrossOrigin(origins = URL)

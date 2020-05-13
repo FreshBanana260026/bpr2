@@ -65,7 +65,7 @@ public class ImageManager implements IImageManager{
 
         Iterator<ImageWriter> imageWriters = ImageIO.getImageWritersByFormatName("jpg");
         if (!imageWriters.hasNext()) {
-            throw new IllegalStateException("No writer found.");
+            throw new IllegalStateException("System could no find any writer.");
         }
 
         ImageWriter imageWriter = imageWriters.next();
