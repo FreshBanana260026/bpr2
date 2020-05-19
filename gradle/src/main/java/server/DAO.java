@@ -34,9 +34,6 @@ public class DAO {
             String sql = "INSERT INTO assistant.userlogin (email, userpassword, nickname) " +
                     "VALUES (\"" + emailValue + "\", \"" + password + "\", \"" + nickname + "\")";
             stmt.executeUpdate(sql);
-            /*while(rs.next())
-                System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-            con.close();*/
             new File("C:\\assistant\\pictures\\" + emailValue).mkdirs();
             return true;
         }catch(Exception e){ System.out.println(e); return false;}
@@ -71,9 +68,6 @@ public class DAO {
             ArrayList<Recipe> resultList = new ArrayList<>();
             while(rs.next())
                 resultList.add(new Recipe(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8)));
-                //System.out.println(rs.getString(5));
-                //result = rs.getString(1);
-            //connection.close();
             return resultList;
         }catch(Exception e){ System.out.println(e); return new ArrayList<>();}
     }
@@ -94,7 +88,6 @@ public class DAO {
             String sql = "INSERT INTO assistant.recipes (email, recipename, category, recipetext, ingredients, preparation, cooking) " +
                     "VALUES (\"" + emailValue + "\", \"" + name + "\", \"" + category + "\", \"" + text + "\",\""+ ingredients + "\", \"" + preparation + "\", \"" + cooking + "\")";
             stmt.executeUpdate(sql);
-
             Statement stmt2 = connection.createStatement();
             String sql2 = "SELECT LAST_INSERT_ID();";
             ResultSet rs2 = stmt2.executeQuery(sql2);

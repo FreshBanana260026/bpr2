@@ -6,18 +6,6 @@ angular.module('foodAssistant')
             $('#recipe-filter').html(this.innerHTML);
         });
         $scope.searchArray = [];
-
-        /*async function alo () {
-            const res = await fetch(SERVER_URL + `/getRecipes?email=mail@test.com`, {mode: 'cors'})
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-            const jsonRes = await res.json();
-            $scope.$apply(function(){
-                $scope.recipesArray = jsonRes;
-            });
-        }
-        alo();*/
         
         $scope.getRecipes = function () {
             $http.get(SERVER_URL + `/getRecipes?email=${statusService.getEmail()}`).then(function(response) {

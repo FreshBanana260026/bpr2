@@ -102,15 +102,6 @@ angular.module('foodAssistant')
         };
 
         $scope.deleteRecipe = function () {
-/*            const request = {
-                mode: 'cors',
-                method: 'DELETE',
-                url: SERVER_URL + '/recipe',
-                headers: {
-                    'Content-Type': 'text/plain',
-                },
-                data: JSON.stringify($scope.recipe.recipeid)
-            };*/
             $http.delete(SERVER_URL + '/recipe' + '?id=' + $scope.recipe.recipeid + '&email=' + statusService.getEmail()).then(function(){
                 $window.location.href = "#!recipes";
             }, function(e){
@@ -173,25 +164,6 @@ angular.module('foodAssistant')
             });
 
             $('.notification-popup').show();
-
-            /*const htmlString = '\n' +
-                '<div id="notification-popup">\n' +
-                '<div id="notification-top"><b>Share Recipe</b>\n' +
-                '</div>' +
-                '<div id="notification-middle">\n' +
-                'Select your friend: <input id="friend-autocomplete">\n' +
-                '</div>' +
-                '<div id="notification-bottom">\n' +
-                '<button class="orange-button" ng-click="closeNotificationPopup()">Close</button>\n' +
-                '</div>' +
-                '</div>';
-
-            const html = $compile(htmlString)($scope);
-            angular.element(document.body).append(html);*/
-
-            /*$("#friend-autocomplete").autocomplete({
-                source: $scope.friendsArray
-            });*/
         };
 
         $scope.sendRecipe = function () {
