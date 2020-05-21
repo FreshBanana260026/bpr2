@@ -166,7 +166,6 @@ angular.module('foodAssistant')
                 $http.post(SERVER_URL + '/image?email=' + statusService.getEmail(), image, {
                     headers: {'Content-Type': undefined}
                 }).then(function () {
-                    //$('#recipeImage')
                     $('#recipe-modal').remove();
                 }).catch(function (e) {
                     console.log(e);

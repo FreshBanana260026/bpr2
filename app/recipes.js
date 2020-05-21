@@ -22,16 +22,16 @@ angular.module('foodAssistant')
         };
         
         $scope.searchRecipes = function () {
-            const parameter = $('#recipe-filter').text();
-            if (parameter === 'name') {
+            $scope.parameter = $('#recipe-filter').text();
+            if ($scope.parameter === 'name') {
                 $scope.searchArray = $scope.recipesArray.filter( rec => {
                     return !rec.recipename.localeCompare($scope.searchParameter, 'en', {sensitivity: 'base'});
                 });
-            } else if (parameter === 'category') {
+            } else if ($scope.parameter === 'category') {
                 $scope.searchArray = $scope.recipesArray.filter( rec => {
                     return !rec.category.localeCompare($scope.searchParameter, 'en', {sensitivity: 'base'});
                 });
-            } else if (parameter === 'ingredient') {
+            } else if ($scope.parameter === 'ingredient') {
                 $scope.searchArray = $scope.recipesArray.filter( rec => {
                     return rec.ingredients.includes($scope.searchParameter);
                 });
