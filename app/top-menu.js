@@ -286,7 +286,7 @@ angular.module('foodAssistant')
         $scope.searchRecipe = function () {
 
             $scope.searchArray = $scope.recipesArray.filter( rec => {
-                return !rec.recipename.localeCompare($scope.searchKeyword, 'en', {sensitivity: 'base'});
+                return rec.recipename.toLowerCase().includes($scope.searchKeyword.toLowerCase());
             });
 
             const htmlString = '\n' +
