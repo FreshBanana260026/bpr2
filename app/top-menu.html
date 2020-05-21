@@ -6,7 +6,7 @@
             <li><a href="#!recipes">Recipes</a></li>
             <li><a href="#!random">Random Recipe</a></li>
         </ul>
-    <input id="search-field" placeholder=" Search recipe"><button id="search-button"><b>Search</b></button>
+    <input id="search-field" placeholder=" Search recipe"ng-model="searchKeyword"><button id="search-button" ng-click="searchRecipe()"><b>Search</b></button>
         <div id="side-menu" ng-click="openDropDown()">
             <div id="drop-button"></div>
             <div class="drop-down">

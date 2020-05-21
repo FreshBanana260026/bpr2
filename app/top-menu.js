@@ -5,12 +5,23 @@ angular.module('foodAssistant')
         if(!statusService.getLoggedIn()) {
             $window.location.href = "#!/";
         }
+        $scope.searchKeyword = '';
         const ctrl = this;
         ctrl.dropDown = true;
         let notificationDropDown = true;
         let noOfNotifications = 0;
         $scope.ingredientsList = [];
         $scope.currentNotification = {};
+
+        $scope.getRecipes = function () {
+            $http.get(SERVER_URL + `/getRecipes?email=${statusService.getEmail()}`).then(function(response) {
+                $scope.recipesArray = response.data;
+            }).catch(function (e) {
+                console.error(e);
+            });
+        };
+        $scope.getRecipes();
+
         $scope.openDropDown = function() {
             if (ctrl.dropDown) {
                 $('.drop-down').fadeIn();
@@ -270,7 +281,37 @@ angular.module('foodAssistant')
 
         $scope.$on('$destroy', function closeHome() {
             $interval.cancel(notificationInterval);
-        })
+        });
+
+        $scope.searchRecipe = function () {
+
+            $scope.searchArray = $scope.recipesArray.filter( rec => {
+                return !rec.recipename.localeCompare($scope.searchKeyword, 'en', {sensitivity: 'base'});
+            });
+
+            const htmlString = '\n' +
+                '<div id="search-result">\n' +
+                '<div id="search-result-top"><b>Search Results</b></div>\n' +
+                '<ul>\n' +
+                '<li ng-repeat="recipe in searchArray" ng-click="searchResultClick(recipe)">{{recipe.recipename}}</li>\n' +
+                '</ul>\n' +
+                '<div id="search-result-bottom"><button class="orange-button" ng-click="closeSearchResults()">Close</button></div>\n' +
+                '</div>';
+            const html = $compile(htmlString)($scope);
+            angular.element(document.body).append(html);
+        };
+
+        $scope.closeSearchResults = function () {
+            $('#search-result').fadeOut(500, function () {
+                $('#search-result').remove();
+            });
+        };
+
+        $scope.searchResultClick = function (recipe) {
+            $('#search-result').remove();
+            statusService.setRecipe(recipe);
+            $window.location.href = "#!recipe";
+        };
     }])
     .directive('topMenu', function () {
         return {
