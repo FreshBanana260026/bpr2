@@ -3,6 +3,6 @@ id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 category VARCHAR(20) NOT NULL,
 recipient VARCHAR(40) NOT NULL,
 origin VARCHAR(40) NOT NULL,
-content TEXT,
+content TEXT NOT NULL,
 FOREIGN KEY (recipient) REFERENCES UserLogin(email)
 )
