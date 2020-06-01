@@ -1,0 +1,4 @@
+rootProject.name = 'gradle'
+includeFlat 'source'
+findProject(':source')?.name = 'src'
+

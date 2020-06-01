@@ -1,0 +1,27 @@
+<div id="wrapper-home">
+    <top-menu></top-menu>
+    <div id="page-body">
+        <div id="recipe-content">
+            <div id="recipe-filters">
+                <h1>Search</h1>
+                Select filter:
+                <div id="recipe-filter-wrapper">
+                    <button id="recipe-filter">
+                        filter
+                    </button>
+                    <ul id="filter-content">
+                        <li class="filter-option">name</li>
+                        <li class="filter-option">ingredient</li>
+                        <li class="filter-option">category</li>
+                    </ul>
+                </div>
+                <br>
+                <br>Search parameter: <input type="text" name="search" ng-model="searchParameter"><br><br>
+                <button id="filter-search-button" class="orange-button" ng-click="searchRecipes()">Search</button>
+            </div>
+            <ul id="recipe-list">
+                <li ng-repeat="recipe in recipesArray" ng-click="recipeClick(recipe)">{{recipe.recipename}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

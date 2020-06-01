@@ -1,0 +1,29 @@
+<div id="top-menu">
+    <img class="small-icon" src="favicon.ico">
+        <ul id="inline-menu">
+            <li><a href="" class="non-click"><img src="favicon.ico"></a></li>
+            <li><a href="#!home">Home</a></li>
+            <li><a href="#!recipes">Recipes</a></li>
+            <li><a href="#!random">Random Recipe</a></li>
+        </ul>
+    <input id="search-field" placeholder=" Search recipe"ng-model="searchKeyword"><button id="search-button" ng-click="searchRecipe()"><b>Search</b></button>
+        <div id="side-menu" ng-click="openDropDown()">
+            <div id="drop-button"></div>
+            <div class="drop-down">
+                <div class="drop-item"><a href="#!profile">Profile</a></div>
+                <div class="drop-item"><a href="#!recipes">Recipes</a></div>
+                <div class="drop-item"><a href="#!friends">Friends</a></div>
+                <div class="drop-item"><a href="#!random">Random Recipe</a></div>
+                <div class="drop-item"><a href="#!list">Shopping List</a></div>
+                <div class="drop-item" ng-click="logOut()"><a>Log Out</a></div>
+            </div>
+        </div>
+        <button id="add-rec-button" ng-click="recipeForm()"></button>
+        <div id="notifications-wrapper">
+            <div id="notifications-button" ng-click="notificationMenu()"><b class="large-screen">Notifications</b><b class="small-screen">N</b></div>
+            <ul id="notifications-drop-down">
+                <li ng-repeat="notification in notificationsArr" ng-click="notificationClick(notification)">{{notification.category}}</li>
+            </ul>
+        </div>
+
+    </div>

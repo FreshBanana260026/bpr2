@@ -1,0 +1,5 @@
+CREATE TABLE UserLogin (
+email VARCHAR(40) PRIMARY KEY NOT NULL,
+userpassword VARCHAR(30) NOT NULL,
+nickname VARCHAR(20) NOT NULL
+)

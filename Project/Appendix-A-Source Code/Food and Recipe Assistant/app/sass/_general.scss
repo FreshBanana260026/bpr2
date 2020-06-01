@@ -1,0 +1,69 @@
+@import "colors";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  margin: 0;
+  font-family: "Arial", Times, serif;
+}
+
+body {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-weight:bold;
+  }
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  outline-color: $main-color;
+}
+
+button {
+  cursor: pointer;
+}
+
+.orange-button {
+  height: 2.5em;
+  background-color: $main-color;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  outline: none;
+}
+
+.orange-button:hover {
+  background-color: $main-color-hover;
+}
+
+[contenteditable="true"]:focus {
+  background-color: #ffffff;
+  outline: 1px solid $main-color;
+}
+
+.white {
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 183, 0, 0.31);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $main-color-hover;
+}

@@ -1,0 +1,131 @@
+@import "colors";
+
+#recipe-div {
+  color: #000000;
+  display: flex;
+  width: 100%;
+  min-height: calc(100% - 120px);
+  background-image: url('../../gradle/src/main/resources/static/pictures/yellow.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 30px 0;
+  background-attachment: fixed;
+}
+
+#recipe-wrap {
+  display: flex;
+  width: calc(100% - 160px);
+  min-height: calc(100% - 130px);
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 25px;
+  padding: 50px;
+
+  #recipe-text-area {
+    width: 100%;
+    height: calc(100% - 60px);
+
+    h1 {
+      color: $menu-color;
+      text-align: center;
+    }
+  }
+
+  .recipe-top {
+    display: inline-block;
+    background-color: $menu-color;
+    color: $main-color;
+    border-radius: 25px;
+    padding: 10px;
+  }
+
+  .white-ingredient {
+    color: #ffffff;
+    cursor: pointer;
+   }
+
+  .white-ingredient:hover {
+    color: $main-color-hover;
+  }
+
+  #recipe-text {
+    display: block;
+    color: $menu-color;
+    font-weight: bold;
+    white-space: pre-wrap;
+    font-family: "Arial", Times, serif;
+    overflow: auto;
+
+    img {
+      float: right;
+      width: 400px;
+      height: 250px;
+      margin-left: 16px;
+      margin-bottom: 16px;
+      border: 3px solid $menu-color;
+      box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.4), -6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+  }
+
+  #modifyIngredients {
+    display: none;
+    height: 15px;
+    width: 15px;
+  }
+}
+
+#quantity-input{
+  display: flex;
+  height: 20px;
+  width: 200px;
+  padding: 10px;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+  box-shadow: 8px 5px 8px 4px rgba(2, 2, 2, 0.4);
+  background-color: $menu-color;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+
+  input {
+    padding: 0;
+    margin: 0 5px;
+    height: 100%;
+    width: 70%;
+    border: 1px solid $main-color;
+  }
+
+  button {
+    height: 100%;
+    width: 25%;
+  }
+}
+
+#recipe-share-status {
+  display: none;
+  color: #ffe300;
+}
+
+@media only screen and (max-width: 600px) {
+  #recipe-wrap {
+    width: calc(100% - 40px);
+    min-height: calc(100% - 70px);
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 25px;
+    padding: 20px 10px;
+
+    #recipe-text {
+      img {
+        width: calc(100% - 6px);
+        margin-left: 0;
+        box-shadow: none;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,172 @@
+@import "colors";
+
+#wrapper {
+  background-image: url('../../gradle/src/main/resources/static/pictures/asparagus.jpg');
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#login {
+  width: 30%;
+  height: 30%;
+  min-width: 300px;
+  min-height: 230px;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .topper {
+    display: flex;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    background-color: $menu-color;
+    text-align: center;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    border: none;
+    line-height: 2em;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    height: 2.5em;
+    margin: 5px 0px;
+    background-color: $menu-color;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+
+  button:hover {
+    background-color: $main-color-hover;
+  }
+
+  .bottom-form {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+
+  }
+  form {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 20px;
+  }
+}
+
+.hundred {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-bg {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.registration-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: 15% auto;
+  width: 40%;
+  color: $menu-color;
+  animation-name: reg-animation;
+  animation-duration: 0.4s;
+
+  table {
+    width: 100%;
+    padding: 20px;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .bottom-form {
+    background-color: $menu-color;
+    min-height: 40px;
+    padding: 5px 20px;
+
+    button {
+      height: 30px;
+      margin: 5px 0px;
+      background-color: $main-color;
+      border: none;
+      color: #ffffff;
+      padding: 5px;
+      width: 100px;
+    }
+
+    #regCancel {
+      float: left;
+    }
+
+    #regSubmit {
+      float: right;
+    }
+
+    button:hover {
+      background-color: $main-color-hover;
+    }
+  }
+}
+
+@keyframes reg-animation {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+#reg-top {
+  display: table;
+  color: #ffffff;
+  width: 100%;
+  height: 40px;
+  background-color: $menu-color;
+  text-align: center;
+
+  b {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.green {
+  background-color: #84ff6d;
+}
+
+.red {
+  background-color: #ff4d4d;
+}
+
+@media only screen and (max-width: 600px) {
+  .registration-content {
+    margin: 20% auto;
+    width: 80%;
+  }
+}

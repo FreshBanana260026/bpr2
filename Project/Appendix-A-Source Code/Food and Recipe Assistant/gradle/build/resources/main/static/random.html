@@ -1,0 +1,52 @@
+<div id="wrapper-home">
+    <top-menu></top-menu>
+    <div id="random-body">
+        <div class="background">
+            <div id="random-container">
+                <div class="left">
+                    <div class="top"><b>Random Recipe</b></div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Category: </td>
+                                <td><input type="text" placeholder=" e.g. cakes" ng-model="randomCategory"></td>
+                            </tr>
+                            <tr>
+                                <td>Ingredient: </td>
+                                <td><input type="text" placeholder=" e.g. milk" ng-model="randomIngredient"></td>
+                            </tr>
+                            <tr>
+                                <td>Difficulty: </td>
+                                <td><input type="text" placeholder=" no. of minutes" ng-model="randomDifficulty"></td>
+                            </tr>
+                            <tr>
+                                <td>Exclude recent: </td>
+                                <td><input type="text" ng-model="randomRecentRecipes"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="bottom">
+                        <button class="orange-button" ng-click="getRandomRecipe()">Get recipe!</button>
+                    </div>
+                </div>
+                <div class="splitter">
+                    <div class="top"></div>
+                    <div class="rest">
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <b>Result</b>
+                    </div>
+                    <div class="random-result">
+                        <b>Name: </b>{{result.recipename}}<br>
+                        <b>Preparation Time: </b>{{result.preparation}} min.<br>
+                        <b>Cooking Time: </b>{{result.cooking}} min.<br><br>
+                        <button class="orange-button" ng-click="openRandomRecipe()">Open Recipe!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div id="wrapper-home">
+    <top-menu></top-menu>
+    <div id="recipe-div">
+        <div id="recipe-wrap">
+            <div id="recipe-text-area">
+                <h1 id="recipe-name">{{recipe.recipename}}</h1>
+                <p class="recipe-top"><b>Category:</b> <b id="recipe-category" class="white">{{recipe.category}}</b></p>
+                <p class="recipe-top"><b>Ingredients: </b><b class="white-ingredient" ng-repeat="ingredient in recipe.ingredients" ng-click="addToShoppingList(ingredient, $event)">{{ingredient}}<b class="white" ng-if="!$last">, </b></b> <button id="modifyIngredients" class="add-ingredients" ng-click="modifyIngredientsForm()"></button></p>
+                <p class="recipe-top"><b>Preparation time: </b><b id="recipe-preparation" class="white">{{recipe.preparation}}</b></p>
+                <p class="recipe-top"><b>Cooking time: </b><b id="recipe-cooking" class="white">{{recipe.cooking}}</b></p>
+                <div id="recipe-text" contenteditable="false"><p><img id="recipe-image">{{recipe.recipetext}}</p></div>
+                <br><button id="updateRecipe" class="orange-button" ng-click="updateRecipe()">Update recipe</button>
+                <button id="shareRecipe" class="orange-button" ng-click="shareRecipe()">Share recipe</button>
+                <button id="deleteRecipe" class="orange-button" ng-click="deleteRecipe()">Delete recipe</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notification-popup" id="share-recipe-popup">
+    <div id="notification-top"><b>Share Recipe</b></div>
+    <div id="notification-middle">
+        Select your friend: <input id="friend-autocomplete" ng-model="shareAddress">
+        <button class="orange-button" ng-click="sendRecipe()">Send</button><br>
+        <span id="recipe-share-status">Processing...</span>
+    </div>
+    <div id="notification-bottom">
+        <button class="orange-button" ng-click="closeShareRecipe()">Close</button>
+    </div>
+</div>
