@@ -118,7 +118,7 @@ $main-color-hover: #ff9d00;
   width: 30px;
   height: 30px;
   margin: 15px 15px;
-  background-image: url('../pictures/hamburger.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/hamburger.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -132,7 +132,7 @@ $main-color-hover: #ff9d00;
   display: inline-block;
   float: right;
   background-color: $menu-color;
-  background-image: url('../pictures/plus.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plus.png');
   border: none;
   color: #ffffff;
   background-position: center;
@@ -144,7 +144,7 @@ $main-color-hover: #ff9d00;
 
 #add-rec-button:hover {
   background-color: $menu-color;
-  background-image: url('../pictures/plushover.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plushover.png');
 }
 
 #recipe-modal {
@@ -367,21 +367,21 @@ $main-color-hover: #ff9d00;
   width: 40px;
   border: none;
   background-color: transparent;
-  background-image: url('../pictures/plus.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plus.png');
   background-size: 100%;
   outline: none;
   cursor: pointer;
 }
 
 #add-new-ingredient:hover {
-  background-image: url('../pictures/plushover.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plushover.png');
 }
 
 .add-ingredients {
   height: 20px;
   width: 20px;
   background-color: transparent;
-  background-image: url('../pictures/plus.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plus.png');
   background-size: 100%;
   border: none;
   outline: none;
@@ -389,7 +389,7 @@ $main-color-hover: #ff9d00;
 }
 
 .add-ingredients:hover {
-  background-image: url('../pictures/plushover.png');
+  background-image: url('../../gradle/src/main/resources/static/pictures/plushover.png');
 }
 
 #notifications-wrapper {
